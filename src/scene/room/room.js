@@ -2,16 +2,15 @@ import { createWall } from "./wall.js";
 import { createFloor } from "./floor.js";
 import { createCeiling } from "./ceiling.js";
 import { createWallMaterial } from "./materials.js";
+import { placeShelves } from "./shelves/shelfPlacement.js";
 
-export function createRoom(scene) {
+
+export async function createRoom(scene) {
 
     console.log("Habitación iniciada");
 
     const room = new BABYLON.TransformNode("room", scene);
 
-    const width = 10;
-    const depth = 10;
-    const height = 3;
 
     const wallMat = createWallMaterial(scene);
 
@@ -20,28 +19,28 @@ export function createRoom(scene) {
     // ---------------------------
 
     const leftWall = createWall(scene, {
-        width: depth,
-        height: height,
-        position: new BABYLON.Vector3(-width / 2, height / 2, 0),
-        rotation: new BABYLON.Vector3(0, Math.PI / 2, 0),
+        width: 10,
+        height: 3,
+        position: new BABYLON.Vector3(-7, 1.5, 0),
+        rotation: new BABYLON.Vector3(0, BABYLON.Tools.ToRadians(90), 0),
         material: wallMat
     });
     leftWall.parent = room;
 
     const rightWall = createWall(scene, {
-        width: depth,
-        height: height,
-        position: new BABYLON.Vector3(width / 2, height / 2, 0),
-        rotation: new BABYLON.Vector3(0, -Math.PI / 2, 0),
+        width: 10,
+        height: 3,
+        position: new BABYLON.Vector3(7, 1.5, 0),
+        rotation: new BABYLON.Vector3(0, BABYLON.Tools.ToRadians(-90), 0),
         material: wallMat
     });
     rightWall.parent = room;
 
     const backWall = createWall(scene, {
-        width: width,
-        height: height,
-        position: new BABYLON.Vector3(0, height / 2, -depth / 2),
-        rotation: new BABYLON.Vector3(0, Math.PI, 0),
+        width: 14,
+        height: 3,
+        position: new BABYLON.Vector3(0, 1.5, -5),
+        rotation: new BABYLON.Vector3(0, BABYLON.Tools.ToRadians(180), 0),
         material: wallMat
     });
     backWall.parent = room;
@@ -50,15 +49,21 @@ export function createRoom(scene) {
     // SUELO
     // ---------------------------
 
-    const floor = createFloor(scene, width, depth);
+    const floor = createFloor(scene, 14, 10);
     floor.parent = room;
 
     // ---------------------------
     // TECHO
     // ---------------------------
 
-    const ceiling = createCeiling(scene, width, depth, height);
+    const ceiling = createCeiling(scene, 14, 10, 3);
     ceiling.parent = room;
+
+    //----------------------------
+    // ESTANTERIAS
+    // ---------------------------
+    await placeShelves(scene, room);
+
 
     return room;
 }
