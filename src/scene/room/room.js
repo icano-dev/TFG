@@ -3,6 +3,7 @@ import { createFloor } from "./floor.js";
 import { createCeiling } from "./ceiling.js";
 import { createWallMaterial } from "./materials.js";
 import { placeShelves } from "./shelves/shelfPlacement.js";
+import { placeLogo } from "./logos/logoPlacement.js";
 
 
 export async function createRoom(scene) {
@@ -63,6 +64,7 @@ export async function createRoom(scene) {
     // ESTANTERIAS
     // ---------------------------
     await placeShelves(scene, room);
+    await placeLogo(scene, room)
 
 
     return room;

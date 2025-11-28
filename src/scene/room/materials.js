@@ -19,7 +19,6 @@ export function createCeilingMaterial(scene) {
     mat.backFaceCulling = false;
     mat.diffuseColor = new BABYLON.Color3(1, 1, 1); // blanco
 
-
     return mat;
 }
 

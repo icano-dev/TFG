@@ -10,9 +10,6 @@ export function createCeiling(scene, width, depth, height) {
     // Lo subimos a la altura del techo
     ceiling.position = new BABYLON.Vector3(0, height, 0);
 
-    // Rotar para poner hacia abajo
-    //  ceiling.rotation.x = BABYLON.Tools.ToRadians(180);   // tumbar plano
-
     const mat = createCeilingMaterial(scene);
     ceiling.material = mat;
 
