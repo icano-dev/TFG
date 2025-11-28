@@ -21,7 +21,7 @@ export async function createRoom(scene) {
     const leftWall = createWall(scene, {
         width: 10,
         height: 3,
-        position: new BABYLON.Vector3(-7, 1.5, 0),
+        position: new BABYLON.Vector3(-3, 1.5, 0),
         rotation: new BABYLON.Vector3(0, BABYLON.Tools.ToRadians(90), 0),
         material: wallMat
     });
@@ -30,14 +30,14 @@ export async function createRoom(scene) {
     const rightWall = createWall(scene, {
         width: 10,
         height: 3,
-        position: new BABYLON.Vector3(7, 1.5, 0),
+        position: new BABYLON.Vector3(3, 1.5, 0),
         rotation: new BABYLON.Vector3(0, BABYLON.Tools.ToRadians(-90), 0),
         material: wallMat
     });
     rightWall.parent = room;
 
     const backWall = createWall(scene, {
-        width: 14,
+        width: 6,
         height: 3,
         position: new BABYLON.Vector3(0, 1.5, -5),
         rotation: new BABYLON.Vector3(0, BABYLON.Tools.ToRadians(180), 0),
@@ -49,14 +49,14 @@ export async function createRoom(scene) {
     // SUELO
     // ---------------------------
 
-    const floor = createFloor(scene, 14, 10);
+    const floor = createFloor(scene, 6, 10);
     floor.parent = room;
 
     // ---------------------------
     // TECHO
     // ---------------------------
 
-    const ceiling = createCeiling(scene, 14, 10, 3);
+    const ceiling = createCeiling(scene, 6, 10, 3);
     ceiling.parent = room;
 
     //----------------------------
