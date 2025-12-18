@@ -3,7 +3,7 @@ import { createRoom } from "./room/room.js";
 import { setupCamera } from "./camera/camera.js";
 import { playIntroAnimation } from "./camera/introAnimation.js";
 
-export function createScene(engine, canvas) {
+export async function createScene(engine, canvas) {
     const scene = new BABYLON.Scene(engine);
     
     console.log("Escena creada");
@@ -12,7 +12,7 @@ export function createScene(engine, canvas) {
     setupLights(scene);
 
     // Creamos la habitacion
-    const room = createRoom(scene);
+    const room = await createRoom(scene);
 
     const camera = setupCamera(scene);
 

@@ -1,24 +1,25 @@
+// src/room/logos/logoModel.js
 
-export function loadLogoModel(scene, filename) {
-    return new Promise((resolve, reject) => {
-        BABYLON.SceneLoader.ImportMesh(
-            "",
-            "./assets/models/logos/",
-            filename,
-            scene,
-            function (meshes) {
-                const logo = meshes[0]; // raíz del modelo
-                console.log(logo.getChildMeshes());
-                logo.scaling = new BABYLON.Vector3(0.01, 0.01, 0.01);
+export function createLogo(scene, {
+    name,
+    imagePath,
+    width = 1,
+    height = 0.4
+}) {
 
+    // Plano del logo
+    const logo = BABYLON.MeshBuilder.CreatePlane(name, {
+        width,
+        height
+    }, scene);
 
-                
-                resolve(logo);
-            },
-            null,
-            function (scene, message) {
-                reject("Error cargando logo: " + message);
-            }
-        );
-    });
+    // Material del logo
+    const mat = new BABYLON.StandardMaterial(`${name}Mat`, scene);
+    mat.diffuseTexture = new BABYLON.Texture(imagePath, scene);
+    mat.diffuseTexture.hasAlpha = true;
+    mat.backFaceCulling = false;
+
+    logo.material = mat;
+
+    return logo;
 }

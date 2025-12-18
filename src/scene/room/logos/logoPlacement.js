@@ -1,28 +1,46 @@
-// src/room/shelves/shelfPlacement.js
+// src/room/logos/logoPlacement.js
 
-import { loadLogoModel } from "./logoModel.js";
+import { createLogo } from "./logoModel.js";
 
-export async function placeLogo(scene, room) {
+export function placeLogo(scene, room) {
 
-    // Cargamos una estantería base
-    const marvelLogo = await loadLogoModel(scene,"marvel.glb");
-    const dcLogo = await loadLogoModel(scene,"dc.glb");
+    // MARVEL
+    const marvelLogo = createLogo(scene, {
+        name: "marvelLogo",
+        imagePath: "./assets/images/logos/Marvel_logo.svg",
+        width: 1.2,
+        height: 0.45
+    });
 
-    // Lo hacemos hijo de la habitacion
     marvelLogo.parent = room;
+    marvelLogo.position = new BABYLON.Vector3(1, 2, -4.95);
+    marvelLogo.rotation = new BABYLON.Vector3(0, BABYLON.Tools.ToRadians(180), 0);
+
+
+    // DC
+    const dcLogo = createLogo(scene, {
+        name: "dcLogo",
+        imagePath: "./assets/images/logos/DC_logo.svg",
+        width: 0.65,
+        height: 0.65
+    });
+
     dcLogo.parent = room;
+    dcLogo.position = new BABYLON.Vector3(-1, 2.05, -4.95);
+    dcLogo.rotation = new BABYLON.Vector3(0, BABYLON.Tools.ToRadians(180), 0);
 
-    // Logo de marvel
-    marvelLogo.position = new BABYLON.Vector3(1, 2, -4.95); // Posicion
-    marvelLogo.scaling = new BABYLON.Vector3(-0.01,0.01,0.01)
-    marvelLogo.rotation = new BABYLON.Vector3(0, 0, BABYLON.Tools.ToRadians(360)); // Rotacion
 
-    // Logo de dc
-    dcLogo.position = new BABYLON.Vector3(-1, 2, -4.95); // Posicion
-    dcLogo.scaling = new BABYLON.Vector3(0.02, 0.02, 0.02)
-    dcLogo.rotation = new BABYLON.Vector3(0, 0, BABYLON.Tools.ToRadians(180)); // Rotacion
+    // HARRY POTTER
+    const hpLogo = createLogo(scene, {
+        name: "hpLogo",
+        imagePath: "./assets/images/logos/Harry_Potter_logo.svg",
+        width: 1.3,
+        height: 0.5
+    });
 
- 
+    hpLogo.parent = room;
+    hpLogo.position = new BABYLON.Vector3(-2.95, 2, -2.6);
+    hpLogo.rotation = new BABYLON.Vector3(0, BABYLON.Tools.ToRadians(-90), 0);
 
-    return { marvelLogo };
+
 }

@@ -64,7 +64,7 @@ export async function createRoom(scene) {
     // ESTANTERIAS
     // ---------------------------
     await placeShelves(scene, room);
-    await placeLogo(scene, room)
+    placeLogo(scene, room);
 
 
     return room;
