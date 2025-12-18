@@ -4,6 +4,8 @@ import { createCeiling } from "./ceiling.js";
 import { createWallMaterial } from "./materials.js";
 import { placeShelves } from "./shelves/shelfPlacement.js";
 import { placeLogo } from "./logos/logoPlacement.js";
+import { loadFunkoModel } from "../model/funkoModel.js";
+import { placeFunkosOnGridShelf } from "../model/funkoPlacement.js";
 
 
 export async function createRoom(scene) {
@@ -63,8 +65,82 @@ export async function createRoom(scene) {
     //----------------------------
     // ESTANTERIAS
     // ---------------------------
-    await placeShelves(scene, room);
+    const shelves = await placeShelves(scene, room);
+
+    //----------------------------
+    // LOGOS
+    // ---------------------------
     placeLogo(scene, room);
+
+    const capitanAmericaBase = await loadFunkoModel(scene, {
+        name: "captanAmericaBase",
+        folder: "marvel",
+        file: "capitanAmericaReducido.glb",
+        scale: 0.13,
+        rotationY: 180
+    });
+
+    const hulkBase = await loadFunkoModel(scene, {
+        name: "hulkBase",
+        folder: "marvel",
+        file: "hulkReducido.glb",
+        scale: 0.13,
+        rotationY: 180
+    });
+    
+    const ironmanBase = await loadFunkoModel(scene, {
+        name: "ironmanBase",
+        folder: "marvel",
+        file: "IronmanReducido.glb",
+        scale: 0.13,
+        rotationY: 180
+    });
+
+    const thorBase = await loadFunkoModel(scene, {
+        name: "thorBase",
+        folder: "marvel",
+        file: "thorReducido.glb",
+        scale: 0.13,
+        rotationY: 180
+    });
+
+    const spidermanBase = await loadFunkoModel(scene, {
+        name: "spidermanBase",
+        folder: "marvel",
+        file: "spidermanReducido.glb",
+        scale: 0.13,
+        rotationY: 180
+    });
+
+    placeFunkosOnGridShelf({
+        shelf: shelves.marvelShelfTop,
+        funkoBase: capitanAmericaBase,
+        slotIndex: 0
+    });
+
+    placeFunkosOnGridShelf({
+        shelf: shelves.marvelShelfTop,
+        funkoBase: hulkBase,
+        slotIndex: 1
+    });
+
+    placeFunkosOnGridShelf({
+        shelf: shelves.marvelShelfTop,
+        funkoBase: ironmanBase,
+        slotIndex: 2
+    });
+
+    placeFunkosOnGridShelf({
+        shelf: shelves.marvelShelfTop,
+        funkoBase: thorBase,
+        slotIndex: 3
+    });
+
+    placeFunkosOnGridShelf({
+        shelf: shelves.marvelShelfTop,
+        funkoBase: spidermanBase,
+        slotIndex: 4
+    });
 
 
     return room;
