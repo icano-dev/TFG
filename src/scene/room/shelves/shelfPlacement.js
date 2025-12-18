@@ -4,43 +4,54 @@ import { loadShelfModel } from "./shelfModel.js";
 
 export async function placeShelves(scene, room) {
 
-    // Cargamos una estantería base
-    const smallShelf = await loadShelfModel(scene,"estanteria2.glb");
-    const bigShelf = await loadShelfModel(scene , "floating_shelf.glb");
+    // Cargamos estantería base para despues clonarlas
+    const smallShelf = await loadShelfModel(scene, "estanteria2.glb");
+    smallShelf.setEnabled(false); // Hacemos que no se vean
+    const bigShelf = await loadShelfModel(scene, "floating_shelf.glb");
+    bigShelf.setEnabled(false);
 
-    // La hacemos hija de la habitación
-    smallShelf.parent = room;
-    bigShelf.parent = room;
 
-    // Estanteria 1 ( base )
-    smallShelf.position = new BABYLON.Vector3(1, 0.2, -4.8); // Posicion
-    smallShelf.rotation = new BABYLON.Vector3(0, BABYLON.Tools.ToRadians(360), 0); // Rotacion
+    // Estanteria MARVEL baja - ( clonada para mejorar el rendimiento )
+    const marvelShelfBottom = smallShelf.clone("marvelShelfBottom");
+    marvelShelfBottom.parent = room; // La hacemos hija de la habitacion
+    marvelShelfBottom.position = new BABYLON.Vector3(1, 0.2, -4.8); // Posicion
+    marvelShelfBottom.setEnabled(true); // Esta si la hacemos visible
 
-    // Estanteria 2 ( clonada para mejorar el rendimiento )
-    const shelf2 = smallShelf.clone("shelf2");
-    shelf2.position = new BABYLON.Vector3(-1, 0.2, -4.8);
+    // Estanteria MARVEL alta
+    const marvelShelfTop = smallShelf.clone("marvelShelfTop");
+    marvelShelfTop.parent = room;
+    marvelShelfTop.position = new BABYLON.Vector3(1, 0.9, -4.8);
+    marvelShelfTop.setEnabled(true);
 
-    // Estanteria 3
-    const shelf3 = smallShelf.clone("shelf3");
-    shelf3.position = new BABYLON.Vector3(1, 0.9, -4.8);
-    shelf3.rotation = new BABYLON.Vector3(0, BABYLON.Tools.ToRadians(360), 0);
+    // Estanteria DC baja
+    const dcShelfBottom = smallShelf.clone("dcShelfBottom");
+    dcShelfBottom.parent = room;
+    dcShelfBottom.position = new BABYLON.Vector3(-1, 0.2, -4.8);
+    dcShelfBottom.setEnabled(true);
 
-    // Estanteria 4
-    const shelf4 = smallShelf.clone("shelf4");
-    shelf4.position = new BABYLON.Vector3(-1, 0.9, -4.8);
-    shelf4.rotation = new BABYLON.Vector3(0, BABYLON.Tools.ToRadians(360), 0);
+    // Estanteria DC alta
+    const dcShelfTop = smallShelf.clone("dcShelfTop");
+    dcShelfTop.parent = room;
+    dcShelfTop.position = new BABYLON.Vector3(-1, 0.9, -4.8);
+    dcShelfTop.setEnabled(true);
 
-    // Estanteria 5
-    // const shelf5 = bigShelf.clone("shelf5");
-    bigShelf.position = new BABYLON.Vector3(2.83, 0.9, -2.8);
-    bigShelf.rotation = new BABYLON.Vector3(0, BABYLON.Tools.ToRadians(270), 0);
-    bigShelf.scaling = new BABYLON.Vector3(0.5, 0.5, 0.5);
+    // Estanteria Harry Potter
+    const hpShelf = bigShelf.clone("hpShelf");
+    hpShelf.parent = room;
+    hpShelf.position = new BABYLON.Vector3(-2.83, 0.9, -2.8);
+    hpShelf.rotation = new BABYLON.Vector3(0, BABYLON.Tools.ToRadians(90), 0);
+    hpShelf.scaling = new BABYLON.Vector3(0.5, 0.5, 0.5);
+    hpShelf.setEnabled(true);
 
-    // Estanteria 6
-    const shelf6 = bigShelf.clone("shelf6");
-    shelf6.position = new BABYLON.Vector3(-2.83, 0.9, -2.8);
-    shelf6.rotation = new BABYLON.Vector3(0, BABYLON.Tools.ToRadians(90), 0);
-    shelf6.scaling = new BABYLON.Vector3(0.5, 0.5, 0.5);
+    // Estanteria Mix
+    const mixShelf = bigShelf.clone("mixShelf")
+    mixShelf.parent = room;
+    mixShelf.position = new BABYLON.Vector3(2.83, 0.9, -2.8);
+    mixShelf.rotation = new BABYLON.Vector3(0, BABYLON.Tools.ToRadians(270), 0);
+    mixShelf.scaling = new BABYLON.Vector3(0.5, 0.5, 0.5);
+    mixShelf.setEnabled(true);
 
-    return { smallShelf, shelf2, shelf3, shelf4, bigShelf };
+
+
+    return { marvelShelfBottom, marvelShelfTop, dcShelfBottom, dcShelfTop, hpShelf, mixShelf };
 }
