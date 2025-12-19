@@ -12,8 +12,7 @@ export async function setupCollection(scene, {
 
     const modelCache = new Map();
 
-    for (const funko of collection) {
-
+    const funkoPromises = collection.map(async (funko) => {
         let baseModel = modelCache.get(funko.file);
 
         if (!baseModel) {
@@ -31,8 +30,8 @@ export async function setupCollection(scene, {
         const shelf = shelfMap[funko.shelf];
 
         if (!shelf) {
-            console.warn(`Shelf "${funko.shelf}" no existe para`, funko.id);
-            continue;
+            console.warn(`Estanteria de nombre: "${funko.shelf}" no existe para`, funko.id);
+            return; // importante usar return, no continue
         }
 
         if (placementType === "grid") {
@@ -48,5 +47,8 @@ export async function setupCollection(scene, {
                 slotIndex: funko.slot
             });
         }
-    }
+    });
+
+    await Promise.all(funkoPromises);
+
 }

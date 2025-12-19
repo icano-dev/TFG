@@ -5,8 +5,9 @@ import { playIntroAnimation } from "./camera/introAnimation.js";
 
 export async function createScene(engine, canvas) {
     const scene = new BABYLON.Scene(engine);
-    
+
     console.log("Escena creada");
+    canvas.style.display = "none"
 
     // Añadimos la luz
     setupLights(scene);
@@ -18,6 +19,9 @@ export async function createScene(engine, canvas) {
 
     // Animación de presentación
     playIntroAnimation(scene, camera, canvas);
+
+    await scene.whenReadyAsync()
+    canvas.style.display = "block"
 
     return scene;
 }
