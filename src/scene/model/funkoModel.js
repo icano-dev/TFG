@@ -4,7 +4,7 @@ export async function loadFunkoModel(scene, {
     name,
     folder,
     file,
-    scale = 0.25,
+    scale = 0.13,
     rotationY = 180
 }) {
     return new Promise((resolve, reject) => {

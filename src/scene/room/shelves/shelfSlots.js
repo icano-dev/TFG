@@ -8,19 +8,17 @@ export function getGridShelfSlots() {
     const rows = 2;
 
     const xSpacing = 0.3;
-    const ySpacing = 0.3;
-
-    const xOffset = 0;
+    const ySpacing = 0.32;
 
     const startX = -((columns - 1) * xSpacing) / 2;
 
-    const baseHeight = 0.18; // ALTURA DE LA PRIMERA BALDA
+    const baseHeight = 0.17; // ALTURA DE LA PRIMERA BALDA
 
     for (let row = 0; row < rows; row++) {
         for (let col = 0; col < columns; col++) {
 
             slots.push({
-                x: startX + col * xSpacing + xOffset,
+                x: startX + col * xSpacing,
                 y: baseHeight + (rows - 1 - row) * ySpacing,
                 z: -0.1
             });
@@ -35,22 +33,25 @@ export function getFloatingShelfSlots() {
 
     const slots = [];
 
-    const shelves = 4;
-    const perShelf = 4;
+    const columns = 4;
+    const rows = 4;
 
-    const xSpacing = 0.45;
-    const ySpacing = 0.35;
+    const xSpacing = 0.85;
+    const ySpacing = 0.65;
 
-    const startX = -((perShelf - 1) * xSpacing) / 2;
-    const startY = 0.6; // altura de la balda superior
+    const startX = -((columns - 1) * xSpacing) / 2;
 
-    for (let shelf = 0; shelf < shelves; shelf++) {
+    const baseHeight = 0.83; // balda superior
 
-        const y = startY - shelf * ySpacing;
+    for (let row = 0; row < rows; row++) {
 
-        for (let i = 0; i < perShelf; i++) {
+        const y = baseHeight - row * ySpacing;
+
+        for (let col = 0; col < columns; col++) {
+
+
             slots.push({
-                x: startX + i * xSpacing,
+                x: startX + (columns - 1 - col) * xSpacing - 0.4,
                 y,
                 z: 0.15
             });
