@@ -74,7 +74,11 @@ export async function createRoom(scene) {
     // ---------------------------
     placeLogo(scene, room);
 
-    await setupCollection(scene, {
+    //----------------------------
+    // LLamadas a las colecciones de funkos ( pasando nombre, carpeta, estanteria y tipo de estanteria )
+    //----------------------------
+
+    const marvelFunkos = await setupCollection(scene, {
         collection: marvelCollection,
         folder: "marvel",
         shelfMap: {
@@ -84,7 +88,7 @@ export async function createRoom(scene) {
         placementType: "grid"
     });
 
-    await setupCollection(scene, {
+    const dcFunkos = await setupCollection(scene, {
         collection: dcCollection,
         folder: "dc",
         shelfMap: {
@@ -94,7 +98,7 @@ export async function createRoom(scene) {
         placementType: "grid"
     });
 
-    await setupCollection(scene, {
+    const hpFunkos = await setupCollection(scene, {
         collection: hpCollection,
         folder: "Harry Potter",
         shelfMap: {
@@ -103,7 +107,16 @@ export async function createRoom(scene) {
         placementType: "floating"
     });
 
+    const allFunkos = [
+        ...marvelFunkos,
+        ...dcFunkos,
+        ...hpFunkos
+    ];
 
 
-    return room;
+
+    return {
+        room,
+        allFunkos
+    };
 }

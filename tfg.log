@@ -1,0 +1,14 @@
+webxr-polyfill.js:34048 [Immersive Web Emulator] native WebXR API successfully overridden
+logger.ts:107 BJS - [12:42:34]: Babylon.js v8.42.0 - WebGL2 - Parallel shader compilation
+createScene.js:10 Escena creada
+room.js:15 Habitación iniciada
+materials.js:17 material techo
+shelfModel.js:14 [t]
+shelfModel.js:14 (10) [t, t, t, t, t, t, t, t, t, t]
+camera.js:14 FreeCamera de intro creada
+introAnimation.js:6 Animación de zoom-in iniciada
+createScene.js:34 createDefaultXRExperienceAsync existe: function
+createScene.js:45 XR activado
+introAnimation.js:24 Animación terminada, cambiando cámara...
+switchCamera.js:12 Cambiado a UniversalCamera
+controls.js:14 Controles activados

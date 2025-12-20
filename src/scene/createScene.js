@@ -2,6 +2,7 @@ import { setupLights } from "./light.js";
 import { createRoom } from "./room/room.js";
 import { setupCamera } from "./camera/camera.js";
 import { playIntroAnimation } from "./camera/introAnimation.js";
+import { enableFunkoSelection } from "./model/modelInteraction.js";
 
 export async function createScene(engine, canvas) {
     const scene = new BABYLON.Scene(engine);
@@ -13,7 +14,13 @@ export async function createScene(engine, canvas) {
     setupLights(scene);
 
     // Creamos la habitacion
-    const room = await createRoom(scene);
+    const { room, allFunkos } = await createRoom(scene);
+
+    enableFunkoSelection(scene, allFunkos, (selectedFunko) => {
+        console.log("Funko seleccionado:", selectedFunko.name);
+        console.log("Metadata:", selectedFunko.metadata);
+    });
+
 
     const camera = setupCamera(scene);
 

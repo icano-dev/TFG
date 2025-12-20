@@ -10,6 +10,8 @@ export async function setupCollection(scene, {
     rotationY = 180
 }) {
 
+    const placedFunkos = [];
+
     const modelCache = new Map();
 
     const funkoPromises = collection.map(async (funko) => {
@@ -34,21 +36,35 @@ export async function setupCollection(scene, {
             return; // importante usar return, no continue
         }
 
+        let placedFunko = null
+
         if (placementType === "grid") {
-            placeFunkosOnGridShelf({
+            placedFunko = placeFunkosOnGridShelf({
                 shelf,
                 funkoBase: baseModel,
                 slotIndex: funko.slot
             });
         } else if (placementType === "floating") {
-            placeFunkosOnFloatingShelf({
+            placedFunko = placeFunkosOnFloatingShelf({
                 shelf,
                 funkoBase: baseModel,
                 slotIndex: funko.slot
             });
         }
+
+        if (placedFunko) {
+            placedFunko.metadata = {
+                ...funko,
+                collectionFolder: folder
+            };
+
+            placedFunkos.push(placedFunko);
+        }
+
+
     });
 
     await Promise.all(funkoPromises);
 
+    return placedFunkos;
 }
