@@ -3,6 +3,9 @@ import { createRoom } from "./room/room.js";
 import { setupCamera } from "./camera/camera.js";
 import { playIntroAnimation } from "./camera/introAnimation.js";
 import { enableFunkoSelection } from "./model/modelInteraction.js";
+import { AppState } from "../state/appState.js";
+import { disableUserControls } from "./camera/controls.js";
+import { playInspectAnimation } from "./camera/inspectAnimation.js";
 
 export async function createScene(engine, canvas) {
     const scene = new BABYLON.Scene(engine);
@@ -17,9 +20,30 @@ export async function createScene(engine, canvas) {
     const { room, allFunkos } = await createRoom(scene);
 
     enableFunkoSelection(scene, allFunkos, (selectedFunko) => {
-        console.log("Funko seleccionado:", selectedFunko.name);
-        console.log("Metadata:", selectedFunko.metadata);
+
+        // Si se esta inspeccionando un funko , no se hace nada
+        if (AppState.mode === "inspect") return;
+
+        AppState.mode = "inspect";
+        AppState.selectedFunko = selectedFunko;
+
+        // Bloqueo de camara
+        scene.activeCamera.detachControl();
+
+        // Limpieza de WASD
+        disableUserControls(scene.activeCamera);
+
+        playInspectAnimation(
+            scene,
+            scene.activeCamera,
+            selectedFunko
+        );
+
+
+        console.log("Modo:", AppState.mode);
+        console.log("Funko que se inspecciona:", AppState.selectedFunko.metadata);
     });
+
 
 
     const camera = setupCamera(scene);

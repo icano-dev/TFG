@@ -11,6 +11,7 @@ export function setupCamera(scene) {
     // No activar controles
     camera.attachControl = () => {}; // neutralizar por si acaso
 
+
     console.log("FreeCamera de intro creada");
 
     return camera;

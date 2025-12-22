@@ -1,3 +1,6 @@
+let controlsEnabled = true;
+
+
 export function enableUserControls(camera) {
 
     // Movimiento WASD
@@ -13,3 +16,18 @@ export function enableUserControls(camera) {
 
     console.log("Controles activados");
 }
+
+export function disableUserControls(camera) {
+    
+    // Limpia WASD
+    camera.keysUp = [];
+    camera.keysDown = [];
+    camera.keysLeft = [];
+    camera.keysRight = [];
+
+    // Opcional: por seguridad, anula movimiento
+    camera.speed = 0;
+
+    console.log("Controles desactivados");
+}
+

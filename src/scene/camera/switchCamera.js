@@ -6,6 +6,8 @@ export function switchToUniversalCamera(scene, canvas, position, target) {
         scene
     );
 
+    newCam.minZ = 0.01; // Valor para la inspeccion cercana del funko
+
     newCam.setTarget(target.clone());
     newCam.attachControl(canvas, true);
 
