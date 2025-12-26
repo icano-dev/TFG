@@ -3,9 +3,10 @@ import { createRoom } from "./room/room.js";
 import { setupCamera } from "./camera/camera.js";
 import { playIntroAnimation } from "./camera/introAnimation.js";
 import { enableFunkoSelection } from "./model/modelInteraction.js";
-import { AppState } from "../state/appState.js";
+import { AppState } from "./state/appState.js";
 import { disableUserControls } from "./camera/controls.js";
 import { playInspectAnimation } from "./camera/inspectAnimation.js";
+import { enableFunkoRotation } from "./model/funkoRotation.js";
 
 export async function createScene(engine, canvas) {
     const scene = new BABYLON.Scene(engine);
@@ -38,6 +39,8 @@ export async function createScene(engine, canvas) {
             scene.activeCamera,
             selectedFunko
         );
+
+        enableFunkoRotation(scene);
 
 
         console.log("Modo:", AppState.mode);
