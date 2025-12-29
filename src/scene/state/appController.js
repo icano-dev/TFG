@@ -4,6 +4,7 @@ import { playInspectAnimation } from "../camera/inspectAnimation.js";
 import { disableUserControls, enableUserControls } from "../camera/controls.js";
 import { updateReturnButton } from "../UI/btnReturn.js";
 import { enableFunkoRotation } from "../model/funkoRotation.js";
+import { showFunkoPanel, hideFunkoPanel } from "../UI/funkoInfoPanel.js";
 
 export function enterInspect(funko, scene, canvas) {
     if (AppState.transitioning || AppState.mode === "inspect") return;
@@ -22,6 +23,7 @@ export function enterInspect(funko, scene, canvas) {
     playInspectAnimation(scene, scene.activeCamera, funko, () => {
         AppState.transitioning = false;
         updateReturnButton();
+        showFunkoPanel(scene, funko);
     });
 
     enableFunkoRotation(scene);
@@ -39,5 +41,6 @@ export function exitInspect(scene, canvas) {
     enableUserControls(scene.activeCamera);
 
     updateReturnButton();
+    hideFunkoPanel();
 
 }
