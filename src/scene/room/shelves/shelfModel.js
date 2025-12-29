@@ -11,7 +11,7 @@ export function loadShelfModel(scene, filename) {
             scene,
             function (meshes) {
                 const shelf = meshes[0]; // raíz del modelo
-                console.log(shelf.getChildMeshes());
+                
                 shelf.scaling = new BABYLON.Vector3(1, 1, 1);
 
                 // Solo aplica la textura si NO es floating_shelf

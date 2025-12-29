@@ -1,4 +1,6 @@
-export function playInspectAnimation(scene, camera, funko, {
+import { AppState } from "../state/appState.js";
+
+export function playInspectAnimation(scene, camera, funko, onFinish, {
     distance = 0.4,
     duration = 60,
 } = {}) {
@@ -60,5 +62,8 @@ export function playInspectAnimation(scene, camera, funko, {
     camera.animations.push(positionAnimation);
     camera.animations.push(targetAnimation);
 
-    scene.beginAnimation(camera, 0, duration, false);
+    scene.beginAnimation(camera, 0, duration, false, 1, () => {
+            if (onFinish) onFinish();
+    });
+
 }

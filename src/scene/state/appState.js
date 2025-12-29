@@ -1,4 +1,7 @@
-export const AppState = {
-    mode: "gallery",      // "gallery" | "inspect" - ira cambiando
-    selectedFunko: null
-};
+export class AppState {
+    constructor() {
+        this.mode = "gallery";
+        this.selectedFunko = null;
+        this.transitioning = false;
+    }
+}

@@ -7,6 +7,10 @@ import { AppState } from "./state/appState.js";
 import { disableUserControls } from "./camera/controls.js";
 import { playInspectAnimation } from "./camera/inspectAnimation.js";
 import { enableFunkoRotation } from "./model/funkoRotation.js";
+import { saveCameraState, restoreCameraState } from "./camera/cameraState.js";
+import { enableUserControls } from "./camera/controls.js";
+import { enterInspect, exitInspect } from "./state/appController.js";
+import { createReturnButton, updateReturnButton } from "./UI/btnReturn.js";
 
 export async function createScene(engine, canvas) {
     const scene = new BABYLON.Scene(engine);
@@ -20,30 +24,11 @@ export async function createScene(engine, canvas) {
     // Creamos la habitacion
     const { room, allFunkos } = await createRoom(scene);
 
-    enableFunkoSelection(scene, allFunkos, (selectedFunko) => {
+    enableFunkoSelection(scene, allFunkos, funko => {
 
-        // Si se esta inspeccionando un funko , no se hace nada
-        if (AppState.mode === "inspect") return;
+        enterInspect(funko, scene, canvas);
 
-        AppState.mode = "inspect";
-        AppState.selectedFunko = selectedFunko;
-
-        // Bloqueo de camara
-        scene.activeCamera.detachControl();
-
-        // Limpieza de WASD
-        disableUserControls(scene.activeCamera);
-
-        playInspectAnimation(
-            scene,
-            scene.activeCamera,
-            selectedFunko
-        );
-
-        enableFunkoRotation(scene);
-
-
-        console.log("Modo:", AppState.mode);
+        console.log("Modo:", AppState.mode + " activado.");
         console.log("Funko que se inspecciona:", AppState.selectedFunko.metadata);
     });
 
@@ -74,6 +59,7 @@ export async function createScene(engine, canvas) {
         console.warn("XR no disponible", e);
     }
 
+    createReturnButton(scene, canvas);
 
     return scene;
 }

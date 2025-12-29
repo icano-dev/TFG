@@ -1,3 +1,5 @@
+import { AppState } from "../state/appState.js";
+
 export function enableFunkoSelection(scene, funkos, onSelect) {
 
     funkos.forEach(funkoRoot => {
@@ -18,6 +20,7 @@ export function enableFunkoSelection(scene, funkos, onSelect) {
                 new BABYLON.ExecuteCodeAction(
                     BABYLON.ActionManager.OnPickTrigger,
                     () => {
+                        if (AppState.mode === "inspect" || AppState.transitioning) return;
                         onSelect(funkoRoot);
                     }
                 )
