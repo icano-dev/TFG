@@ -1,23 +1,44 @@
-import { AppState } from "../state/appState.js";
 import { exitInspect } from "../state/appController.js";
 
-let btn = null;
+let uiTexture = null;
+let button = null;
+let visible = false
 
-export function createReturnButton(scene, canvas) {
-    btn = document.getElementById("exitInspectBtn");
-    updateReturnButton(scene, canvas);
-
-    btn.addEventListener("click", () => {
-        exitInspect(scene, canvas);
-    });
+function initReturnGUI(scene) {
+    uiTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("returnUI", true, scene);
 }
 
-export function updateReturnButton(scene, canvas) {
-    if (!btn) return;
+export function createReturnButton(scene) {
+    if (!uiTexture) initReturnGUI(scene);
+    if (!button) {
 
-    if (AppState.mode === "inspect" && !AppState.transitioning) {
-        btn.style.display = "block";
+        button = BABYLON.GUI.Button.CreateSimpleButton("returnBtn", "Volver");
+
+        button.width = "120px";
+        button.height = "50px";
+        button.color = "white";
+        button.background = "black";
+
+        button.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
+        button.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+        button.paddingLeft = "20px";
+        button.paddingTop = "20px";
+
+        button.onPointerUpObservable.add(() => {
+            exitInspect(scene);
+            uiTexture.removeControl(button)
+            visible = false
+        });
+    }
+}
+
+export function updateReturnButton() {
+    if (!button) return
+    if (visible) {
+        uiTexture.removeControl(button)
+        visible = false
     } else {
-        btn.style.display = "none";
+        uiTexture.addControl(button)
+        visible = true
     }
 }
