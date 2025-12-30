@@ -1,0 +1,16 @@
+[
+    {
+        "handle": "batman",
+        "name": "Batman (The Batman)",
+        "collection": "DC Movies",
+        "number": "1188",
+        "year": 2022,
+        "rarity": "Comum",
+        "Variants": 1,
+        "description": "Funko Pop de Batman basado en la película The Batman (2022)",
+        "images": [
+            "/TFG/assets/images/DC/batman.jpg",
+            "/TFG/assets/images/DC/batmanBox.jpg"
+        ]
+    }
+]

@@ -11,6 +11,7 @@ import { saveCameraState, restoreCameraState } from "./camera/cameraState.js";
 import { enableUserControls } from "./camera/controls.js";
 import { enterInspect, exitInspect } from "./state/appController.js";
 import { createReturnButton, updateReturnButton } from "./UI/btnReturn.js";
+import { loadFunkoDatabase } from "./data/funkoDataBase.js";
 
 export async function createScene(engine, canvas) {
     const scene = new BABYLON.Scene(engine);
@@ -60,6 +61,8 @@ export async function createScene(engine, canvas) {
     }
 
     createReturnButton(scene, canvas);
+
+    await loadFunkoDatabase();
 
     return scene;
 }
