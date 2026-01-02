@@ -26,7 +26,7 @@ export function createGallerySection(data) {
 function createPopup() {
     popup = new BABYLON.GUI.Rectangle("galleryPopup");
     popup.width = "420px";
-    popup.height = "520px%";
+    popup.height = "520px";
     popup.background = "rgba(0,0,0,0.9)";
     popup.thickness = 0;
     popup.isVisible = false;

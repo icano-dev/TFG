@@ -7,6 +7,6 @@ export async function loadFunkoDatabase() {
     funkos = await res.json();
 }
 
-export function getFunkoById(handle) {
-    return funkos.find(f => f.handle === handle);
+export function getFunkoById(id) {
+    return funkos.find(f => f.id === id);
 }

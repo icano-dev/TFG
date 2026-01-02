@@ -1,16 +1,86 @@
 [
     {
-        "handle": "batman",
+        "id": "batman",
         "name": "Batman (The Batman)",
-        "collection": "DC Movies",
+        "collection": "Movies",
         "number": "1188",
         "year": 2022,
-        "rarity": "Comum",
+        "rarity": "Comun",
         "Variants": 1,
-        "description": "Funko Pop de Batman basado en la película The Batman (2022)",
+        "description": "Figura Funko POP! #1188 de Batman basada en la película The Batman (2022). Representa a Bruce Wayne con su traje oscuro y diseño realista del film, fabricada en vinilo y presentada en caja con ventana. Altura aproximada de 9 cm. Producto oficial licenciado por DC Comics, ideal para coleccionistas y fans del Caballero Oscuro.",
         "images": [
             "/TFG/assets/images/DC/batman.jpg",
             "/TFG/assets/images/DC/batmanBox.jpg"
+        ]
+    },
+    {
+        "id": "superman",
+        "name": "Superman",
+        "collection": "DC New Classics",
+        "number": "599",
+        "year": 2025,
+        "rarity": "Comun",
+        "Variants": 1,
+        "description": "Figura Funko POP! #599 de Superman perteneciente a la colección DC New Classics. Representa al Hombre de Acero con su traje clásico azul y capa roja, fabricada en vinilo y presentada en caja con ventana. Altura aproximada de 10 cm. Producto oficial licenciado por DC Comics, ideal para coleccionistas y fans del universo DC.",
+        "images": [
+            "/TFG/assets/images/DC/superman.jpg",
+            "/TFG/assets/images/DC/SupermanBox.webp"
+        ]
+    },
+    {
+        "id": "flash",
+        "name": "The Flash",
+        "collection": "Movies",
+        "number": "1333",
+        "year": 2023,
+        "rarity": "Comun",
+        "Variants": 2,
+        "description": "Figura Funko POP! #1333 de The Flash (DC Comics) perteneciente a la línea Movies. Representa al superhéroe Barry Allen (The Flash) en vinilo, con su característico traje rojo y detalles clásicos del personaje. Altura aproximada de 9 cm, presentada en caja con ventana. Producto oficial licenciado, ideal para coleccionistas y fans de DC Comics.",
+        "images": [
+            "/TFG/assets/images/DC/flash.jpg",
+            "/TFG/assets/images/DC/flashBox.png"
+        ]
+    },
+    {
+        "id": "wonderwoman",
+        "name": "Wonder Woman",
+        "collection": "DC New Classics",
+        "number": "600",
+        "year": 2025,
+        "rarity": "Comum",
+        "Variants": 1,
+        "description": "Figura Funko POP! #600 de Wonder Woman perteneciente a la colección DC New Classics. Representa a la icónica princesa amazona con su traje clásico de héroe, fabricada en vinilo y presentada en caja con ventana. Altura aproximada de 11 cm. Producto oficial licenciado por DC Comics, ideal para coleccionistas y fans del universo DC.",
+        "images": [
+            "/TFG/assets/images/DC/wonderWoman.jpg",
+            "/TFG/assets/images/DC/WonderWomanBox.webp"
+        ]
+    },
+    {
+        "id": "aquaman",
+        "name": "Aquaman",
+        "collection": "Movies",
+        "number": "1301",
+        "year": 2023,
+        "rarity": "Comum",
+        "Variants": 1,
+        "description": "Figura Funko POP! #1301 de Aquaman perteneciente a la colección Movies: Aquaman y el Reino Perdido. Representa al héroe Arthur Curry con su traje clásico de combate, fabricada en vinilo y presentada en caja con ventana. Altura aproximada de 9 cm. Producto oficial licenciado por DC Comics y Warner Bros., ideal para fans y coleccionistas.",
+        "images": [
+            "/TFG/assets/images/DC/aquaman.jpg",
+            "/TFG/assets/images/DC/aquamanBox.webp"
+        ]
+    },
+    {
+        "id": "ironman",
+        "name": "Iron Man",
+        "collection": "Marvel New Classics",
+        "number": "1421",
+        "year": 2024,
+        "rarity": "Comum",
+        "Variants": 1,
+        "description": "Figura Funko POP! #1421 de Iron Man perteneciente a la colección Marvel New Classics. Representa al icónico Tony Stark con su armadura clásica de Iron Man, fabricada en vinilo y presentada en caja con ventana. Altura aproximada de 9–10 cm. Producto oficial licenciado por Marvel, ideal para coleccionistas y fans del Universo Marvel.",
+        "images": [
+            "/TFG/assets/images/Marvel/Ironman.png",
+            "/TFG/assets/images/Marvel/IronmanBox.png"
         ]
     }
 ]

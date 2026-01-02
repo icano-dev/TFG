@@ -2,6 +2,7 @@ import { getFunkoById } from "../../data/funkoDataBase.js";
 import { createTittle } from "./tittlePanel.js";
 import { createDataSection } from "./dataPanel.js";
 import { createGallerySection } from "./galleryPanel.js";
+import { createDescriptionSection } from "./descriptionPanel.js";
 
 let uiTexture = null;
 let panel = null;
@@ -16,12 +17,15 @@ export function showInfoPanel(scene, funko) {
     if (!panel) createPanel();
 
     const data = getFunkoById(funko.metadata.id);
+    console.log("metadata.id =", funko?.metadata?.id);
+    console.log("data =", data);
     if (!data) return;
 
     panel._content.clearControls();
 
     panel._content.addControl(createTittle(data));
     panel._content.addControl(createDataSection(data));
+    panel._content.addControl(createDescriptionSection(data.description));
     panel._content.addControl(createGallerySection(data));
 
     if (!visible) {
