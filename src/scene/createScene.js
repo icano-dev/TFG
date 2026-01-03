@@ -44,21 +44,21 @@ export async function createScene(engine, canvas) {
     canvas.style.display = "block"
 
     // ---- DEBUG XR ----
-    console.log(
-        "createDefaultXRExperienceAsync existe:",
-        typeof scene.createDefaultXRExperienceAsync
-    );
+    // console.log(
+    //     "createDefaultXRExperienceAsync existe:",
+    //     typeof scene.createDefaultXRExperienceAsync
+    // );
 
 
     // ---- XR (solo visualización, sin tocar nada) ----
-    try {
-        const xr = await scene.createDefaultXRExperienceAsync({
-            floorMeshes: []
-        });
-        console.log("XR activado");
-    } catch (e) {
-        console.warn("XR no disponible", e);
-    }
+    // try {
+    //     const xr = await scene.createDefaultXRExperienceAsync({
+    //         floorMeshes: []
+    //     });
+    //     console.log("XR activado");
+    // } catch (e) {
+    //     console.warn("XR no disponible", e);
+    // }
 
     createReturnButton(scene, canvas);
 

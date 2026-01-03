@@ -2,7 +2,7 @@ let funkos = [];
 
 export async function loadFunkoDatabase() {
     const res = await fetch(
-        "/TFG/src/scene/data/funkos.json"
+        "./src/scene/data/funkos.json"
     );
     funkos = await res.json();
 }

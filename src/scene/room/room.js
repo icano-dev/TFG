@@ -8,6 +8,7 @@ import { setupCollection } from "../model/funkoDataManager.js";
 import { marvelCollection } from "../model/data/marvel.js";
 import { dcCollection } from "../model/data/dc.js";
 import { hpCollection } from "../model/data/harryPotter.js";
+import { mixCollection } from "../model/data/mix.js";
 
 
 export async function createRoom(scene) {
@@ -107,10 +108,20 @@ export async function createRoom(scene) {
         placementType: "floating"
     });
 
+    const mixFunkos = await setupCollection(scene, {
+        collection: mixCollection,
+        folder: "mix",
+        shelfMap: {
+            main: shelves.mixShelf
+        },
+        placementType: "floating"
+    });
+
     const allFunkos = [
         ...marvelFunkos,
         ...dcFunkos,
-        ...hpFunkos
+        ...hpFunkos,
+        ...mixFunkos
     ];
 
 

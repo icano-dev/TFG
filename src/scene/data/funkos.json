@@ -9,8 +9,8 @@
         "Variants": 1,
         "description": "Figura Funko POP! #1188 de Batman basada en la película The Batman (2022). Representa a Bruce Wayne con su traje oscuro y diseño realista del film, fabricada en vinilo y presentada en caja con ventana. Altura aproximada de 9 cm. Producto oficial licenciado por DC Comics, ideal para coleccionistas y fans del Caballero Oscuro.",
         "images": [
-            "/TFG/assets/images/DC/batman.jpg",
-            "/TFG/assets/images/DC/batmanBox.jpg"
+            "./assets/images/DC/batman.jpg",
+            "./assets/images/DC/batmanBox.jpg"
         ]
     },
     {
@@ -23,8 +23,8 @@
         "Variants": 1,
         "description": "Figura Funko POP! #599 de Superman perteneciente a la colección DC New Classics. Representa al Hombre de Acero con su traje clásico azul y capa roja, fabricada en vinilo y presentada en caja con ventana. Altura aproximada de 10 cm. Producto oficial licenciado por DC Comics, ideal para coleccionistas y fans del universo DC.",
         "images": [
-            "/TFG/assets/images/DC/superman.jpg",
-            "/TFG/assets/images/DC/SupermanBox.webp"
+            "./assets/images/DC/superman.jpg",
+            "./assets/images/DC/SupermanBox.webp"
         ]
     },
     {
@@ -37,8 +37,8 @@
         "Variants": 2,
         "description": "Figura Funko POP! #1333 de The Flash (DC Comics) perteneciente a la línea Movies. Representa al superhéroe Barry Allen (The Flash) en vinilo, con su característico traje rojo y detalles clásicos del personaje. Altura aproximada de 9 cm, presentada en caja con ventana. Producto oficial licenciado, ideal para coleccionistas y fans de DC Comics.",
         "images": [
-            "/TFG/assets/images/DC/flash.jpg",
-            "/TFG/assets/images/DC/flashBox.png"
+            "./assets/images/DC/flash.jpg",
+            "./assets/images/DC/flashBox.png"
         ]
     },
     {
@@ -51,8 +51,8 @@
         "Variants": 1,
         "description": "Figura Funko POP! #600 de Wonder Woman perteneciente a la colección DC New Classics. Representa a la icónica princesa amazona con su traje clásico de héroe, fabricada en vinilo y presentada en caja con ventana. Altura aproximada de 11 cm. Producto oficial licenciado por DC Comics, ideal para coleccionistas y fans del universo DC.",
         "images": [
-            "/TFG/assets/images/DC/wonderWoman.jpg",
-            "/TFG/assets/images/DC/WonderWomanBox.webp"
+            "./assets/images/DC/wonderWoman.jpg",
+            "./assets/images/DC/WonderWomanBox.webp"
         ]
     },
     {
@@ -65,8 +65,8 @@
         "Variants": 1,
         "description": "Figura Funko POP! #1301 de Aquaman perteneciente a la colección Movies: Aquaman y el Reino Perdido. Representa al héroe Arthur Curry con su traje clásico de combate, fabricada en vinilo y presentada en caja con ventana. Altura aproximada de 9 cm. Producto oficial licenciado por DC Comics y Warner Bros., ideal para fans y coleccionistas.",
         "images": [
-            "/TFG/assets/images/DC/aquaman.jpg",
-            "/TFG/assets/images/DC/aquamanBox.webp"
+            "./assets/images/DC/aquaman.jpg",
+            "./assets/images/DC/aquamanBox.webp"
         ]
     },
     {
@@ -79,8 +79,204 @@
         "Variants": 1,
         "description": "Figura Funko POP! #1421 de Iron Man perteneciente a la colección Marvel New Classics. Representa al icónico Tony Stark con su armadura clásica de Iron Man, fabricada en vinilo y presentada en caja con ventana. Altura aproximada de 9–10 cm. Producto oficial licenciado por Marvel, ideal para coleccionistas y fans del Universo Marvel.",
         "images": [
-            "/TFG/assets/images/Marvel/Ironman.png",
-            "/TFG/assets/images/Marvel/IronmanBox.png"
+            "./assets/images/Marvel/Ironman.png",
+            "./assets/images/Marvel/IronmanBox.png"
+        ]
+    },
+    {
+        "id": "hulk",
+        "name": "Hulk",
+        "collection": "Marvel New Classics",
+        "number": "1420",
+        "year": 2024,
+        "rarity": "Comum",
+        "Variants": 1,
+        "description": "Figura Funko POP! #1420 de Hulk perteneciente a la colección Marvel New Classics. Representa al increíble Hulk en su forma clásica verde con musculatura imponente, fabricada en vinilo y presentada en caja con ventana. Altura aproximada de 9–12 cm. Producto oficial licenciado por Marvel, ideal para coleccionistas y fans del Universo Marvel.",
+        "images": [
+            "./assets/images/Marvel/hulk.jpg",
+            "./assets/images/Marvel/HulkBox.png"
+        ]
+    },
+    {
+        "id": "capitanAmerica",
+        "name": "Capitan America",
+        "collection": "Marvel New Classics",
+        "number": "1419",
+        "year": 2024,
+        "rarity": "Comum",
+        "Variants": 1,
+        "description": "Figura Funko POP! #1419 de Captain America perteneciente a la colección Marvel New Classics. Representa al icónico Steve Rogers con su traje clásico y escudo, fabricada en vinilo y presentada en caja con ventana. Altura aproximada de 9–10 cm. Producto oficial licenciado por Marvel, ideal para coleccionistas y fans del Universo Marvel.",
+        "images": [
+            "./assets/images/Marvel/Capitan_America.jpg",
+            "./assets/images/Marvel/CaptainAmericaBox.png"
+        ]
+    },
+    {
+        "id": "thor",
+        "name": "Thor",
+        "collection": "Marvel New Classics",
+        "number": "1117",
+        "year": 2022,
+        "rarity": "Comum",
+        "Variants": 2,
+        "description": "Figura Funko POP! #1117 de Thor perteneciente a la colección Marvel New Classics. Representa al Dios del Trueno con su martillo Mjolnir, fabricada en vinilo y presentada en caja con ventana. Altura aproximada de 9 – 10 cm. Producto oficial licenciado por Marvel, ideal para coleccionistas y fans del Universo Marvel.",
+        "images": [
+            "./assets/images/Marvel/Thor.jpg",
+            "./assets/images/Marvel/ThorBox.png"
+        ]
+    },
+    {
+        "id": "spiderman",
+        "name": "Spider-Man",
+        "collection": "Marvel New Classics",
+        "number": "1526",
+        "year": 2024,
+        "rarity": "Comum",
+        "Variants": 1,
+        "description": "Figura Funko POP! #1526 de Spider-Man perteneciente a la colección Marvel New Classics. Representa al famoso superhéroe arácnido con su traje clásico, fabricada en vinilo y presentada en caja con ventana. Altura aproximada de 9 – 10 cm. Producto oficial licenciado por Marvel, ideal para coleccionistas y fans del Universo Marvel.",
+        "images": [
+            "./assets/images/Marvel/spiderman.jpg",
+            "./assets/images/Marvel/SpidermanBox.webp"
+        ]
+    },
+    {
+        "id": "HarryPotter",
+        "name": "Harry Potter",
+        "collection": "Wizarding World",
+        "number": "01",
+        "year": 2015,
+        "rarity": "Comum",
+        "Variants": 1,
+        "description": "Figura Funko POP! #01 de Harry Potter, perteneciente a la colección Wizarding World. Representa a Harry Potter con su uniforme de Hogwarts y su varita mágica, fabricada en vinilo y presentada en caja con ventana. Altura aproximada de 9–10 cm. Producto oficial licenciado por Warner Bros., ideal para coleccionistas y fans del mundo mágico de Harry Potter.",
+        "images": [
+            "./assets/images/Harry Potter/Harry_Potter.jpg",
+            "./assets/images/Harry Potter/Harry_Potter_Box.jpg"
+        ]
+    },
+    {
+        "id": "Hermione",
+        "name": "Hermione Granger",
+        "collection": "Wizarding World",
+        "number": "03",
+        "year": 2015,
+        "rarity": "Comum",
+        "Variants": 1,
+        "description": "Figura Funko POP! #03 de Hermione Granger perteneciente a la colección Wizarding World (Harry Potter). Representa a Hermione con su uniforme de Hogwarts y su varita, fabricada en vinilo y presentada en caja con ventana. Altura aproximada de 9–10 cm. Producto oficial licenciado por Warner Bros., ideal para coleccionistas y fans del mundo mágico.",
+        "images": [
+            "./assets/images/Harry Potter/Hermione.jpg",
+            "./assets/images/Harry Potter/HermioneBox.jpg"
+        ]
+    },
+    {
+        "id": "Ron",
+        "name": "Ron Weasley",
+        "collection": "Wizarding World",
+        "number": "02",
+        "year": 2015,
+        "rarity": "Comum",
+        "Variants": 1,
+        "description": "Figura Funko POP! #02 de Ron Weasley perteneciente a la colección Wizarding World (Harry Potter). Representa a Ron con su uniforme de Hogwarts y su varita, fabricada en vinilo y presentada en caja con ventana. Altura aproximada de 9–10 cm. Producto oficial licenciado por Warner Bros., ideal para coleccionistas y fans del mundo mágico de Harry Potter.",
+        "images": [
+            "./assets/images/Harry Potter/Ron.jpg",
+            "./assets/images/Harry Potter/RonBox.jpg"
+        ]
+    },
+    {
+        "id": "Dumbledore",
+        "name": "Albus Dumbledore",
+        "collection": "Wizarding World",
+        "number": "04",
+        "year": 2015,
+        "rarity": "Comum",
+        "Variants": 1,
+        "description": "Figura Funko POP! #04 de Albus Dumbledore perteneciente a la colección Wizarding World (Harry Potter). Representa al sabio director de Hogwarts con su túnica y bastón, fabricada en vinilo y presentada en caja con ventana. Altura aproximada de 9–10 cm. Producto oficial licenciado por Warner Bros., ideal para coleccionistas y fans del mundo mágico de Harry Potter.",
+        "images": [
+            "./assets/images/Harry Potter/Dumbledore.jpg",
+            "./assets/images/Harry Potter/DumbledoreBox.jpg"
+        ]
+    },
+    {
+        "id": "Doby",
+        "name": "Dobby",
+        "collection": "Wizarding World",
+        "number": "17",
+        "year": 2015,
+        "rarity": "Comum",
+        "Variants": 1,
+        "description": "Figura Funko POP! #17 de Dobby perteneciente a la colección Wizarding World (Harry Potter). Representa a Dobby, el elfo doméstico, con su túnica característica, fabricada en vinilo y presentada en caja con ventana. Altura aproximada de 9–10 cm. Producto oficial licenciado por Warner Bros., ideal para coleccionistas y fans de Harry Potter.",
+        "images": [
+            "./assets/images/Harry Potter/Dobby.jpg",
+            "./assets/images/Harry Potter/DobbyBox.jpeg"
+        ]
+    },
+    {
+        "id": "Pikachu",
+        "name": "Pikachu",
+        "collection": "Pokémon",
+        "number": "553",
+        "year": 2025,
+        "rarity": "Comum",
+        "Variants": 3,
+        "description": "Figura Funko POP! #553 de Pikachu, perteneciente a la colección Pokémon Pop! Games. Representa al querido Pokémon amarillo saludando (waving), fabricada en vinilo y presentada en caja con ventana. Altura aproximada de 9–9,5 cm. Producto oficial licenciado, ideal para coleccionistas y fans de Pokémon.",
+        "images": [
+            "./assets/images/Mix/Pikachu.jpg",
+            "./assets/images/Mix/PikachuBox.jpg"
+        ]
+    },
+    {
+        "id": "goku",
+        "name": "Super Saiyan Goku",
+        "collection": "Animation",
+        "number": "1999",
+        "year": 2025,
+        "rarity": "Legendary",
+        "Variants": 1,
+        "description": "Figura Funko POP! #1999 de Super Saiyan Goku (Cel Shaded), edición limitada Legendary. Exclusiva regional de eVend, con tirada limitada a 1.200 unidades. Figura de vinilo de 3.75\" presentada en caja con ventana. Producto oficial licenciado, pieza muy buscada por coleccionistas de Dragon Ball Z.",
+        "images": [
+            "./assets/images/mix/goku.webp",
+            "./assets/images/mix/gokuBox.webp"
+        ]
+    },
+    {
+        "id": "once",
+        "name": "Eleven with Eggos",
+        "collection": "Television",
+        "number": "421",
+        "year": 2017,
+        "rarity": "Comum",
+        "Variants": 2,
+        "description": "Figura Funko POP! #421 de Eleven with Eggos de la serie Stranger Things (Pop! Television). Representa a Eleven sosteniendo sus waffles Eggo, fabricada en vinilo y presentada en caja con ventana. Incluye versión estándar y variante Chase.",
+        "images": [
+            "./assets/images/mix/once.png",
+            "./assets/images/mix/onceBox.webp"
+        ]
+    },
+    {
+        "id": "stitch",
+        "name": "Stitch on Surfboard",
+        "collection": "Disney",
+        "number": "1594",
+        "year": 2025,
+        "rarity": "Exclusive",
+        "Variants": 1,
+        "description": "Figura Funko POP! #1594 de Stitch on Surfboard perteneciente a la colección Disney Lilo & Stitch. Representa a Stitch surfeando sobre una tabla con colores vibrantes, fabricada en vinilo y presentada en caja con ventana. Edición especial de Summer Convention / SDCC 2025. Producto oficial licenciado por Disney, ideal para fans y coleccionistas.",
+        "images": [
+            "./assets/images/mix/stitch.jpg",
+            "./assets/images/mix/stitchBox.png"
+        ]
+    },
+    {
+        "id": "beast",
+        "name": "The Beast",
+        "collection": "Disney Classics",
+        "number": "1135",
+        "year": 2022,
+        "rarity": "Comum",
+        "Variants": 1,
+        "description": "Figura Funko POP! #1135 de The Beast de la película La Bella y la Bestia (Disney Classics). Representa a la Bestia con su pose clásica, fabricada en vinilo y presentada en caja con ventana. Altura aproximada de 9–10 cm. Producto oficial licenciado por Disney, ideal para coleccionistas y fans de Disney.",
+        "images": [
+            "./assets/images/mix/beast.jpg",
+            "./assets/images/mix/beastBox.jpeg"
         ]
     }
 ]
