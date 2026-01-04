@@ -41,7 +41,7 @@ export function getFloatingShelfSlots() {
 
     const startX = -((columns - 1) * xSpacing) / 2;
 
-    const baseHeight = 0.83; // balda superior
+    const baseHeight = 0.85; // balda superior
 
     for (let row = 0; row < rows; row++) {
 

@@ -42,5 +42,18 @@ export function placeLogo(scene, room) {
     hpLogo.position = new BABYLON.Vector3(-2.95, 2, -2.6);
     hpLogo.rotation = new BABYLON.Vector3(0, BABYLON.Tools.ToRadians(-90), 0);
 
+    // MIX
+    const mixLogo = createLogo(scene, {
+        name: "mixLogo",
+        imagePath: "./assets/images/logos/mix.svg",
+        width: 1.3,
+        height: 0.5
+    });
+
+    mixLogo.parent = room;
+    mixLogo.position = new BABYLON.Vector3(2.95, 2, -3);
+    mixLogo.rotation = new BABYLON.Vector3(0, BABYLON.Tools.ToRadians(-270), 0);
+
+
 
 }
