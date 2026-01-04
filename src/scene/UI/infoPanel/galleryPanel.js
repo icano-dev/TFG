@@ -36,6 +36,7 @@ function createPopup() {
     img.stretch = BABYLON.GUI.Image.STRETCH_UNIFORM;
     img.width = "90%";
     img.height = "90%";
+    img.isPointerBlocker = false;
 
     popup._img = img;
 
@@ -52,9 +53,9 @@ function createPopup() {
     closeBtn.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
 
     closeBtn.onPointerUpObservable.add(() => popup.isVisible = false);
-    popup.addControl(closeBtn);
-
+    
     popup.addControl(img);
+    popup.addControl(closeBtn);
 
     const left = BABYLON.GUI.Button.CreateSimpleButton("prev", "◀");
     const right = BABYLON.GUI.Button.CreateSimpleButton("next", "▶");
@@ -93,6 +94,11 @@ function openGallery(images = []) {
 function change(dir) {
     index = (index + dir + currentImages.length) % currentImages.length;
     popup._img.source = currentImages[index];
+}
+
+export function closeGallery() {
+    if (!popup) return;
+    popup.isVisible = false;
 }
 
 

@@ -1,11 +1,20 @@
 import { exitInspect } from "../state/appController.js";
+import { closeGallery } from "./infoPanel/galleryPanel.js";
 
 let uiTexture = null;
 let button = null;
 let visible = false
+let escListener = false
 
 function initReturnGUI(scene) {
     uiTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("returnUI", true, scene);
+}
+
+function goBack(scene) {
+    closeGallery();
+    exitInspect(scene);
+    uiTexture.removeControl(button);
+    visible = false;
 }
 
 export function createReturnButton(scene) {
@@ -25,10 +34,18 @@ export function createReturnButton(scene) {
         button.paddingTop = "20px";
 
         button.onPointerUpObservable.add(() => {
-            exitInspect(scene);
-            uiTexture.removeControl(button)
-            visible = false
+            goBack(scene);
         });
+    }
+
+    // ESC solo se añade una vez
+    if (!escListener) {
+        window.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && visible) {
+                goBack(scene);
+            }
+        });
+        escListener = true;
     }
 }
 
