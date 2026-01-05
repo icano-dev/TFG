@@ -14,55 +14,51 @@ import { createReturnButton, updateReturnButton } from "./UI/btnReturn.js";
 import { loadFunkoDatabase } from "./data/funkoDataBase.js";
 
 export async function createScene(engine, canvas) {
+
+    const loadingScreen = document.getElementById("loadingScreen");
+
     const scene = new BABYLON.Scene(engine);
 
-    console.log("Escena creada");
-    canvas.style.display = "none"
+    // Mostrar pantalla de carga
+    loadingScreen.style.display = "flex";
+    loadingScreen.style.opacity = "1";
+    loadingScreen.style.pointerEvents = "all";
 
-    // Añadimos la luz
+    // Luces
     setupLights(scene);
 
-    // Creamos la habitacion
+    // Habitación + Funkos (esto es lo que más tarda)
     const { room, allFunkos } = await createRoom(scene);
 
+    // Interacción
     enableFunkoSelection(scene, allFunkos, funko => {
-
         enterInspect(funko, scene, canvas);
-
-        console.log("Modo:", AppState.mode + " activado.");
-        console.log("Funko que se inspecciona:", AppState.selectedFunko.metadata);
     });
 
-
-
+    // Cámara
     const camera = setupCamera(scene);
 
-    // Animación de presentación
+    // Intro
     playIntroAnimation(scene, camera, canvas);
 
-    await scene.whenReadyAsync()
-    canvas.style.display = "block"
+    // Base de datos Funkos
+    await loadFunkoDatabase();
 
-    // ---- DEBUG XR ----
-    // console.log(
-    //     "createDefaultXRExperienceAsync existe:",
-    //     typeof scene.createDefaultXRExperienceAsync
-    // );
+    // Esperamos a que Babylon tenga todo listo
+    await scene.whenReadyAsync();
 
+    // Ocultamos loader con fade
+    loadingScreen.style.opacity = "0";
+    loadingScreen.style.pointerEvents = "none";
 
-    // ---- XR (solo visualización, sin tocar nada) ----
-    // try {
-    //     const xr = await scene.createDefaultXRExperienceAsync({
-    //         floorMeshes: []
-    //     });
-    //     console.log("XR activado");
-    // } catch (e) {
-    //     console.warn("XR no disponible", e);
-    // }
+    setTimeout(() => {
+        loadingScreen.style.display = "none";
+    }, 600);
+
+    console.log("Escena creada");
 
     createReturnButton(scene, canvas);
 
-    await loadFunkoDatabase();
-
     return scene;
 }
+
