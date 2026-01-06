@@ -23,7 +23,7 @@ export function loadShelfModel(scene, filename) {
                 resolve(shelf);
             },
             null,
-            function (scene, message) {
+            function (message) {
                 reject("Error cargando estantería: " + message);
             }
         );

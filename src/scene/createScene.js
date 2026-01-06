@@ -3,14 +3,8 @@ import { createRoom } from "./room/room.js";
 import { setupCamera } from "./camera/camera.js";
 import { playIntroAnimation } from "./camera/introAnimation.js";
 import { enableFunkoSelection } from "./model/modelInteraction.js";
-import { AppState } from "./state/appState.js";
-import { disableUserControls } from "./camera/controls.js";
-import { playInspectAnimation } from "./camera/inspectAnimation.js";
-import { enableFunkoRotation } from "./model/funkoRotation.js";
-import { saveCameraState, restoreCameraState } from "./camera/cameraState.js";
-import { enableUserControls } from "./camera/controls.js";
-import { enterInspect, exitInspect } from "./state/appController.js";
-import { createReturnButton, updateReturnButton } from "./UI/btnReturn.js";
+import { enterInspect } from "./state/appController.js";
+import { createReturnButton } from "./UI/btnReturn.js";
 import { loadFunkoDatabase } from "./data/funkoDataBase.js";
 
 export async function createScene(engine, canvas) {

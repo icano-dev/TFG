@@ -1,5 +1,3 @@
-import { AppState } from "../state/appState.js";
-
 export function playInspectAnimation(scene, camera, funko, onFinish, {
     distance = 0.4,
     duration = 60,

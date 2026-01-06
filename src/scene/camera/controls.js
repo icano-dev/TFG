@@ -1,6 +1,3 @@
-let controlsEnabled = true;
-
-
 export function enableUserControls(camera) {
 
     // Movimiento WASD
