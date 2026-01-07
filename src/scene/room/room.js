@@ -1,6 +1,7 @@
 import { createWall } from "./wall.js";
 import { createFloor } from "./floor.js";
 import { createCeiling } from "./ceiling.js";
+import { createDoor } from "./door.js";
 import { createWallMaterial } from "./materials.js";
 import { placeShelves } from "./shelves/shelfPlacement.js";
 import { placeLogo } from "./logos/logoPlacement.js";
@@ -27,6 +28,7 @@ export async function createRoom(scene) {
     const leftWall = createWall(scene, {
         width: 10,
         height: 3,
+        thickness: 0.1,
         position: new BABYLON.Vector3(-3, 1.5, 0),
         rotation: new BABYLON.Vector3(0, BABYLON.Tools.ToRadians(90), 0),
         material: wallMat
@@ -36,6 +38,7 @@ export async function createRoom(scene) {
     const rightWall = createWall(scene, {
         width: 10,
         height: 3,
+        thickness: 0.1,
         position: new BABYLON.Vector3(3, 1.5, 0),
         rotation: new BABYLON.Vector3(0, BABYLON.Tools.ToRadians(-90), 0),
         material: wallMat
@@ -45,11 +48,37 @@ export async function createRoom(scene) {
     const backWall = createWall(scene, {
         width: 6,
         height: 3,
+        thickness: 0.1,
         position: new BABYLON.Vector3(0, 1.5, -5),
         rotation: new BABYLON.Vector3(0, BABYLON.Tools.ToRadians(180), 0),
         material: wallMat
     });
     backWall.parent = room;
+
+    const frontWall = createWall(scene, {
+        width: 6,
+        height: 3,
+        thickness: 0.1,
+        position: new BABYLON.Vector3(0, 1.5, 5),
+        rotation: new BABYLON.Vector3(0, BABYLON.Tools.ToRadians(180), 0),
+        material: wallMat
+    });
+    frontWall.parent = room;
+
+    // ---------------------------
+    // PUERTA 
+    // ---------------------------
+
+    const fakeDoor = createDoor(scene, {
+        name: "door",
+        width: 1.2,
+        height: 2
+    });
+
+    fakeDoor.parent = room;
+    fakeDoor.position = new BABYLON.Vector3(0, 1, 4.94);
+    fakeDoor.rotation = new BABYLON.Vector3(0, BABYLON.Tools.ToRadians(180), 0);
+
 
     // ---------------------------
     // SUELO

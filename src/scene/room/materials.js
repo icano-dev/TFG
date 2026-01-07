@@ -1,6 +1,6 @@
 export function createWallMaterial(scene) {
     const mat = new BABYLON.StandardMaterial("wallMat", scene);
-    mat.diffuseTexture = new BABYLON.Texture("./assets/models/habitacion/wall.jpg", scene);
+    mat.diffuseTexture = new BABYLON.Texture("./assets/models/habitacion/wall/wall.jpg", scene);
     return mat;
 }
 
@@ -25,6 +25,15 @@ export function createCeilingMaterial(scene) {
 export function createShelfMaterial(scene) {
     const mat = new BABYLON.StandardMaterial("shelfWood", scene);
     mat.diffuseTexture = new BABYLON.Texture("./assets/models/habitacion/shelf/shelf.jpg", scene);
+
+    return mat;
+}
+
+export function createDoorMaterial(scene) {
+    const mat = new BABYLON.StandardMaterial(`doorMat`, scene);
+    mat.diffuseTexture = new BABYLON.Texture("./assets/images/logos/door.png", scene);
+    mat.diffuseTexture.hasAlpha = true;
+    mat.backFaceCulling = false;
 
     return mat;
 }

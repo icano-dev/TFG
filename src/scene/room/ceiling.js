@@ -10,6 +10,8 @@ export function createCeiling(scene, width, depth, height) {
     // Lo subimos a la altura del techo
     ceiling.position = new BABYLON.Vector3(0, height, 0);
 
+    ceiling.checkCollisions = true;
+
     const mat = createCeilingMaterial(scene);
     ceiling.material = mat;
 

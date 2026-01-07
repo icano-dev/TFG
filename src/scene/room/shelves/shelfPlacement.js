@@ -5,9 +5,9 @@ import { loadShelfModel } from "./shelfModel.js";
 export async function placeShelves(scene, room) {
 
     // Cargamos estantería base para despues clonarlas
-    const smallShelf = await loadShelfModel(scene, "estanteria2.glb");
+    const smallShelf = await loadShelfModel(scene, "shelf1.glb");
     smallShelf.setEnabled(false); // Hacemos que no se vean
-    const bigShelf = await loadShelfModel(scene, "floating_shelf.glb");
+    const bigShelf = await loadShelfModel(scene, "shelf2.glb");
     bigShelf.setEnabled(false);
 
 

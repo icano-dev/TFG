@@ -2,20 +2,23 @@
 export function createWall(scene, {
     width = 5,
     height = 3,
+    thickness = 0.1,
     position = new BABYLON.Vector3(0, 0, 0),
     rotation = new BABYLON.Vector3(0, 0, 0),
     material = null
-    
+
 } = {}) {
 
-    const wall = BABYLON.MeshBuilder.CreatePlane("wall", {
+    const wall = BABYLON.MeshBuilder.CreateBox("wall", {
         width,
         height,
-        sideOrientation: BABYLON.Mesh.DOUBLESIDE
+        depth: thickness,
     }, scene);
 
     wall.position = position;
     wall.rotation = rotation;
+
+    wall.checkCollisions = true;
 
     if (material) {
         wall.material = material;

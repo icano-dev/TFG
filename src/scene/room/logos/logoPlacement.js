@@ -13,7 +13,7 @@ export function placeLogo(scene, room) {
     });
 
     marvelLogo.parent = room;
-    marvelLogo.position = new BABYLON.Vector3(1, 2, -4.95);
+    marvelLogo.position = new BABYLON.Vector3(1, 2, -4.94);
     marvelLogo.rotation = new BABYLON.Vector3(0, BABYLON.Tools.ToRadians(180), 0);
 
 
@@ -26,7 +26,7 @@ export function placeLogo(scene, room) {
     });
 
     dcLogo.parent = room;
-    dcLogo.position = new BABYLON.Vector3(-1, 2.05, -4.95);
+    dcLogo.position = new BABYLON.Vector3(-1, 2.05, -4.94);
     dcLogo.rotation = new BABYLON.Vector3(0, BABYLON.Tools.ToRadians(180), 0);
 
 
@@ -39,20 +39,20 @@ export function placeLogo(scene, room) {
     });
 
     hpLogo.parent = room;
-    hpLogo.position = new BABYLON.Vector3(-2.95, 2, -2.6);
+    hpLogo.position = new BABYLON.Vector3(-2.94, 2, -2.6);
     hpLogo.rotation = new BABYLON.Vector3(0, BABYLON.Tools.ToRadians(-90), 0);
 
-    // MIX
-    const mixLogo = createLogo(scene, {
-        name: "mixLogo",
-        imagePath: "./assets/images/logos/mix.svg",
-        width: 1.3,
-        height: 0.5
+    // Variety
+    const varietyLogo = createLogo(scene, {
+        name: "varietyLogo",
+        imagePath: "./assets/images/logos/Variety.svg",
+        width: 1.5,
+        height: 0.8
     });
 
-    mixLogo.parent = room;
-    mixLogo.position = new BABYLON.Vector3(2.95, 2, -3);
-    mixLogo.rotation = new BABYLON.Vector3(0, BABYLON.Tools.ToRadians(-270), 0);
+    varietyLogo.parent = room;
+    varietyLogo.position = new BABYLON.Vector3(2.94, 2, -3);
+    varietyLogo.rotation = new BABYLON.Vector3(0, BABYLON.Tools.ToRadians(-270), 0);
 
 
 

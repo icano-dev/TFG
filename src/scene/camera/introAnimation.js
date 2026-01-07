@@ -3,10 +3,14 @@ import { enableUserControls } from "./controls.js";
 
 export function playIntroAnimation(scene, camera, canvas) {
 
-    console.log("Animación de zoom-in iniciada");
+    console.log("Animación de entrada interior");
+
+    // Empieza JUSTO dentro de la puerta
+    camera.position = new BABYLON.Vector3(0, 1.6, 4);
+    camera.setTarget(new BABYLON.Vector3(0, 1.6, 0));
 
     const anim = new BABYLON.Animation(
-        "zoomIn",
+        "enterInterior",
         "position.z",
         60,
         BABYLON.Animation.ANIMATIONTYPE_FLOAT,
@@ -14,23 +18,27 @@ export function playIntroAnimation(scene, camera, canvas) {
     );
 
     anim.setKeys([
-        { frame: 0, value: camera.position.z },
-        { frame: 120, value: 2 } // acercarse hasta z = 2
+        { frame: 0, value: 4 },
+        { frame: 120, value: 2 }
     ]);
 
+    camera.animations = [];
     camera.animations.push(anim);
 
     scene.beginAnimation(camera, 0, 120, false, 1.0, () => {
-        console.log("Animación terminada, cambiando cámara...");
+
+        // Corrige posición física real
+        const finalPos = camera.position.clone();
+        finalPos.y = 1.6; // altura de ojos
 
         const newCam = switchToUniversalCamera(
             scene,
             canvas,
-            camera.position,
+            finalPos,
             new BABYLON.Vector3(0, 1.6, 0)
         );
 
         enableUserControls(newCam);
     });
-
 }
+

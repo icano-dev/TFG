@@ -9,5 +9,7 @@ export function createFloor(scene, width, depth) {
     const mat = createFloorMaterial(scene);
     floor.material = mat;
 
+    floor.checkCollisions = true;
+
     return floor;
 }

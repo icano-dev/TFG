@@ -13,6 +13,9 @@ export async function createScene(engine, canvas) {
 
     const scene = new BABYLON.Scene(engine);
 
+    scene.collisionsEnabled = true;
+
+
     // Mostrar pantalla de carga
     loadingScreen.style.display = "flex";
     loadingScreen.style.opacity = "1";
