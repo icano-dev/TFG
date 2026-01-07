@@ -219,8 +219,8 @@
         "Variants": 3,
         "description": "Figura Funko POP! #553 de Pikachu, perteneciente a la colección Pokémon Pop! Games. Representa al querido Pokémon amarillo saludando (waving), fabricada en vinilo y presentada en caja con ventana. Altura aproximada de 9–9,5 cm. Producto oficial licenciado, ideal para coleccionistas y fans de Pokémon.",
         "images": [
-            "./assets/images/Mix/Pikachu.jpg",
-            "./assets/images/Mix/PikachuBox.jpg"
+            "./assets/images/variety/Pikachu.jpg",
+            "./assets/images/variety/PikachuBox.jpg"
         ]
     },
     {
@@ -233,8 +233,8 @@
         "Variants": 1,
         "description": "Figura Funko POP! #1999 de Super Saiyan Goku (Cel Shaded), edición limitada Legendary. Exclusiva regional de eVend, con tirada limitada a 1.200 unidades. Figura de vinilo de 3.75\" presentada en caja con ventana. Producto oficial licenciado, pieza muy buscada por coleccionistas de Dragon Ball Z.",
         "images": [
-            "./assets/images/mix/goku.webp",
-            "./assets/images/mix/gokuBox.webp"
+            "./assets/images/variety/goku.webp",
+            "./assets/images/variety/gokuBox.webp"
         ]
     },
     {
@@ -247,8 +247,8 @@
         "Variants": 2,
         "description": "Figura Funko POP! #421 de Eleven with Eggos de la serie Stranger Things (Pop! Television). Representa a Eleven sosteniendo sus waffles Eggo, fabricada en vinilo y presentada en caja con ventana. Incluye versión estándar y variante Chase.",
         "images": [
-            "./assets/images/mix/once.png",
-            "./assets/images/mix/onceBox.webp"
+            "./assets/images/variety/once.png",
+            "./assets/images/variety/onceBox.webp"
         ]
     },
     {
@@ -261,8 +261,8 @@
         "Variants": 1,
         "description": "Figura Funko POP! #1594 de Stitch on Surfboard perteneciente a la colección Disney Lilo & Stitch. Representa a Stitch surfeando sobre una tabla con colores vibrantes, fabricada en vinilo y presentada en caja con ventana. Edición especial de Summer Convention / SDCC 2025. Producto oficial licenciado por Disney, ideal para fans y coleccionistas.",
         "images": [
-            "./assets/images/mix/stitch.jpg",
-            "./assets/images/mix/stitchBox.png"
+            "./assets/images/variety/stitch.jpg",
+            "./assets/images/variety/stitchBox.png"
         ]
     },
     {
@@ -275,8 +275,8 @@
         "Variants": 1,
         "description": "Figura Funko POP! #1135 de The Beast de la película La Bella y la Bestia (Disney Classics). Representa a la Bestia con su pose clásica, fabricada en vinilo y presentada en caja con ventana. Altura aproximada de 9–10 cm. Producto oficial licenciado por Disney, ideal para coleccionistas y fans de Disney.",
         "images": [
-            "./assets/images/mix/beast.jpg",
-            "./assets/images/mix/beastBox.jpeg"
+            "./assets/images/variety/beast.jpg",
+            "./assets/images/variety/beastBox.jpeg"
         ]
     }
 ]

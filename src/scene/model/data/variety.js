@@ -1,6 +1,6 @@
-// src/model/data/mix.js
+// src/model/data/variety.js
 
-export const mixCollection = [
+export const varietyCollection = [
   {
     id: "Pikachu",
     file: "Pikachu.glb",
