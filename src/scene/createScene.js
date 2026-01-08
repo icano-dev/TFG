@@ -23,6 +23,9 @@ import { enableFunkoSelection } from "./model/modelInteraction.js";
 import { enterInspect } from "./state/appController.js";
 import { createReturnButton } from "./UI/btnReturn.js";
 import { loadFunkoDatabase } from "./data/funkoDataBase.js";
+import { initXR } from "./XR/XRHelpers.js";
+import { setupXRControllers } from "./XR/XRController.js";
+import { setupXRInputHandlers } from "./XR/XRInputHandlers.js";
 
 /**
  * Crea y configura la escena principal del proyecto.
@@ -104,6 +107,14 @@ export async function createScene(engine, canvas) {
      * Creación del botón de retorno desde el modo inspección.
      */
     createReturnButton(scene, canvas);
+
+    /**
+     * Iniciamos modo XR
+     */
+    const xr = await initXR(scene);
+    setupXRControllers(xr);
+    setupXRInputHandlers(xr);
+
 
     return scene;
 }
