@@ -1,11 +1,36 @@
+/**
+ * galleryPanel.js
+ * ---------------------------------------------------------
+ * Módulo encargado de mostrar una galería de imágenes de cada Funko
+ * dentro del panel de información.
+ * 
+ * Permite al usuario:
+ *  - Abrir una ventana emergente (popup)
+ *  - Navegar entre imágenes con botones
+ *  - Cerrar la galería cuando desee
+ */
+
 let popup = null;
 let currentImages = [];
 let index = 0;
 
+/**
+ * Crea la sección "Ver galería" dentro del panel de información.
+ * 
+ * @param {Object} data Datos del Funko (incluye array de imágenes)
+ * @returns {BABYLON.GUI.StackPanel} Contenedor GUI con el botón de galería
+ */
 export function createGallerySection(data) {
+
+    /**
+     * Contenedor vertical del botón de galería.
+     */
     const container = new BABYLON.GUI.StackPanel();
     container.paddingTop = "12px";
 
+    /**
+     * Texto clicable que actúa como botón.
+     */
     const btn = new BABYLON.GUI.TextBlock();
     btn.text = "Ver galería";
     btn.height = "30px";
@@ -14,16 +39,29 @@ export function createGallerySection(data) {
     btn.isPointerBlocker = true;
     btn.hoverCursor = "pointer";
 
+    /**
+     * Al hacer clic se abre la galería con las imágenes del Funko.
+     */
     btn.onPointerUpObservable.add(() => openGallery(data.images));
 
     container.addControl(btn);
 
+    /**
+     * Inicializa el popup si aún no existe.
+     */
     if (!popup) createPopup();
 
     return container;
 }
 
+/**
+ * Crea el popup flotante de la galería.
+ */
 function createPopup() {
+
+    /**
+     * Contenedor principal del popup.
+     */
     popup = new BABYLON.GUI.Rectangle("galleryPopup");
     popup.width = "420px";
     popup.height = "520px";
@@ -32,6 +70,9 @@ function createPopup() {
     popup.isVisible = false;
     popup.zIndex = 999;
 
+    /**
+     * Imagen central de la galería.
+     */
     const img = new BABYLON.GUI.Image("galleryImage", "");
     img.stretch = BABYLON.GUI.Image.STRETCH_UNIFORM;
     img.width = "90%";
@@ -40,6 +81,9 @@ function createPopup() {
 
     popup._img = img;
 
+    /**
+     * Botón de cierre del popup.
+     */
     const closeBtn = BABYLON.GUI.Button.CreateSimpleButton("close", "✖");
     closeBtn.width = "40px";
     closeBtn.height = "40px";
@@ -53,10 +97,13 @@ function createPopup() {
     closeBtn.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
 
     closeBtn.onPointerUpObservable.add(() => popup.isVisible = false);
-    
+
     popup.addControl(img);
     popup.addControl(closeBtn);
 
+    /**
+     * Botones de navegación izquierda/derecha.
+     */
     const left = BABYLON.GUI.Button.CreateSimpleButton("prev", "◀");
     const right = BABYLON.GUI.Button.CreateSimpleButton("next", "▶");
 
@@ -67,7 +114,6 @@ function createPopup() {
         btn.cornerRadius = 25;
     });
 
-
     left.width = right.width = "50px";
     left.height = right.height = "50px";
 
@@ -77,12 +123,20 @@ function createPopup() {
     popup.addControl(left);
     popup.addControl(right);
 
-    left.onPointerUpObservable.add(() => change(-1));
+    left.onPointerUpObservable.add(() => change(-1)); // Cambio de imagen a cada boton
     right.onPointerUpObservable.add(() => change(1));
 
+    /**
+     * Inserción del popup en la GUI global.
+     */
     BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("galleryUI").addControl(popup);
 }
 
+/**
+ * Abre la galería con las imágenes indicadas.
+ * 
+ * @param {string[]} images Array de rutas de imágenes
+ */
 function openGallery(images = []) {
     if (!images.length) return;
     currentImages = images;
@@ -91,15 +145,20 @@ function openGallery(images = []) {
     popup.isVisible = true;
 }
 
+/**
+ * Cambia la imagen mostrada.
+ * 
+ * @param {number} dir Dirección del cambio (-1 anterior, +1 siguiente)
+ */
 function change(dir) {
     index = (index + dir + currentImages.length) % currentImages.length;
     popup._img.source = currentImages[index];
 }
 
+/**
+ * Cierra la galería si está abierta.
+ */
 export function closeGallery() {
     if (!popup) return;
     popup.isVisible = false;
 }
-
-
-

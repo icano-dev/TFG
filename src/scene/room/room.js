@@ -109,15 +109,15 @@ export async function createRoom(scene) {
     /**
      * Puerta decorativa de entrada.
      */
-    const fakeDoor = createDoor(scene, {
+    const door = createDoor(scene, {
         name: "door",
         width: 1.2,
         height: 2
     });
 
-    fakeDoor.parent = room;
-    fakeDoor.position = new BABYLON.Vector3(0, 1, 4.94);
-    fakeDoor.rotation = new BABYLON.Vector3(0, BABYLON.Tools.ToRadians(180), 0);
+    door.parent = room;
+    door.position = new BABYLON.Vector3(0, 1, 4.94);
+    door.rotation = new BABYLON.Vector3(0, BABYLON.Tools.ToRadians(180), 0);
 
     // ---------------------------
     // SUELO
@@ -206,7 +206,7 @@ export async function createRoom(scene) {
         collection: varietyCollection,
         folder: "variety",
         shelfMap: {
-            main: shelves.mixShelf
+            main: shelves.varietyShelf
         },
         placementType: "floating"
     });

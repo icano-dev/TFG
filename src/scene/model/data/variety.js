@@ -1,6 +1,15 @@
-// src/model/data/variety.js
+/**
+ * variety.js
+ * ---------------------------------------------------------
+ * Módulo que define la colección Variety.
+ * 
+ * Contiene Funkos de diferentes universos que no pertenecen
+ * a una sola franquicia concreta.
+ * 
+ */
 
 export const varietyCollection = [
+
   {
     id: "Pikachu",
     file: "Pikachu.glb",
