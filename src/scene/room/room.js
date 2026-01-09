@@ -192,7 +192,7 @@ export async function createRoom(scene) {
      */
     const hpFunkos = await setupCollection(scene, {
         collection: hpCollection,
-        folder: "Harry Potter",
+        folder: "Harry-Potter",
         shelfMap: {
             main: shelves.hpShelf
         },

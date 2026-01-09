@@ -9,6 +9,7 @@
  *  - Navegar entre imágenes con botones
  *  - Cerrar la galería cuando desee
  */
+import { getUITexture } from "./infoFunkoPanel.js";
 
 let popup = null;
 let currentImages = [];
@@ -62,7 +63,16 @@ function createPopup() {
     /**
      * Contenedor principal del popup.
      */
+
     popup = new BABYLON.GUI.Rectangle("galleryPopup");
+
+    const isMobile = window.innerWidth < 768;
+
+    if (isMobile) {
+        popup.scaleX = 1.4;
+        popup.scaleY = 1.4;
+    }
+
     popup.width = "420px";
     popup.height = "520px";
     popup.background = "rgba(0,0,0,0.9)";
@@ -129,7 +139,7 @@ function createPopup() {
     /**
      * Inserción del popup en la GUI global.
      */
-    BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("galleryUI").addControl(popup);
+    getUITexture().addControl(popup);
 }
 
 /**

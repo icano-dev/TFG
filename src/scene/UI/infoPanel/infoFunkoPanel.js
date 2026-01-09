@@ -36,6 +36,7 @@ function initUI(scene) {
     uiTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("infoPanelUI", true, scene);
 }
 
+
 /**
  * Muestra el panel de información del Funko seleccionado.
  * 
@@ -100,16 +101,20 @@ function createPanel() {
     /**
      * Contenedor principal del panel.
      */
+
+    const isMobile = window.innerWidth < 768;
+
     panel = new BABYLON.GUI.Rectangle("infoPanel");
-    panel.width = "380px";
-    panel.height = "520px";
+
+    panel.width = isMobile ? "92%" : "380px";
+    panel.height = isMobile ? "92%" : "520px";
+    panel.left = isMobile ? "0px" : "-150px";
     panel.cornerRadius = 20;
     panel.thickness = 2;
     panel.color = "#ffd54f";
     panel.background = "#1b1b1b";
     panel.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT;
     panel.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_CENTER;
-    panel.left = "-150px";
 
     /**
      * Contenedor vertical para las secciones internas.
@@ -124,3 +129,8 @@ function createPanel() {
     panel._content = stack;
     panel.addControl(stack);
 }
+
+export function getUITexture() {
+    return uiTexture;
+}
+

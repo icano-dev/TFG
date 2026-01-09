@@ -14,36 +14,30 @@
 
 import { createScene } from "./scene/createScene.js";
 
-/**
- * Canvas HTML donde Babylon renderiza la escena 3D.
- */
-const canvas = document.getElementById("renderCanvas");
+(async () => {
 
-/**
- * Motor gráfico de Babylon.
- * El segundo parámetro activa el antialiasing para suavizar bordes.
- */
-const engine = new BABYLON.Engine(canvas, true);
+    const canvas = document.getElementById("renderCanvas");
+    const engine = new BABYLON.Engine(canvas, true);
 
-/**
- * Creación de la escena principal.
- */
-const scene = await createScene(engine, canvas);
+    const scene = await createScene(engine, canvas);
 
-/**
- * Bucle de renderizado.
- * Babylon llama a esta función aproximadamente 60 veces por segundo.
- * En cada iteración se vuelve a dibujar la escena completa.
- */
-engine.runRenderLoop(() => {
-    scene.render();
-});
+    engine.runRenderLoop(() => scene.render());
 
-/**
- * Evento que se dispara cuando cambia el tamaño de la ventana.
- * Se reajusta el motor para que el canvas mantenga la proporción
- * y no se deforme la escena.
- */
-window.addEventListener("resize", () => {
-    engine.resize();
-});
+    window.addEventListener("resize", () => {
+        engine.resize();
+        if (scene.activeCamera) {
+            scene.activeCamera.fovMode = BABYLON.Camera.FOVMODE_VERTICAL_FIXED;
+            scene.activeCamera.fov = BABYLON.Tools.ToRadians(75);
+            scene.activeCamera.minZ = 0.05;
+            scene.activeCamera.maxZ = 200;
+        }
+    });
+
+    if (screen.orientation?.lock) {
+        screen.orientation.lock("landscape").catch(() => { });
+    }
+
+})();
+
+
+
