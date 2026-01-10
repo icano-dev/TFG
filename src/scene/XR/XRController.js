@@ -6,6 +6,8 @@
 
 export function setupXRControllers(xr) {
 
+    if (!xr) return;
+
     xr.input.onControllerAddedObservable.add((controller) => {
 
         controller.onMotionControllerInitObservable.add((motionController) => {
@@ -16,3 +18,4 @@ export function setupXRControllers(xr) {
         });
     });
 }
+

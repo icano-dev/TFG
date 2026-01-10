@@ -6,6 +6,8 @@
 
 export function setupXRInputHandlers(xr) {
 
+    if (!xr) return;
+
     xr.baseExperience.featuresManager.enableFeature(
         BABYLON.WebXRFeatureName.POINTER_SELECTION,
         "latest",
@@ -17,3 +19,4 @@ export function setupXRInputHandlers(xr) {
         }
     );
 }
+

@@ -11,6 +11,7 @@
  *  - Variantes
  */
 
+import { getUITexture } from "./infoFunkoPanel.js";
 import { createLabelRow } from "../UIHelpers.js";
 
 /**
@@ -21,12 +22,20 @@ import { createLabelRow } from "../UIHelpers.js";
  */
 export function createDataSection(data) {
 
+    function isMobileUI() {
+        const ui = getUITexture();
+        return ui && ui.getSize().width < 700;
+    }
+
+    const isMobile = isMobileUI();
+
+
     /**
      * Contenedor vertical de la sección de datos.
      */
     const container = new BABYLON.GUI.StackPanel();
-    container.paddingTop = "30px";
-    container.paddingBottom = "30px";
+    container.paddingTop = isMobile ? "14px" : "30px";
+    container.paddingBottom = isMobile ? "14px" : "30px";
     container.width = "100%";
     container.isVertical = true;
 

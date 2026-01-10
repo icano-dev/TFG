@@ -8,6 +8,8 @@
  * contenedor con scroll vertical.
  */
 
+import { getUITexture } from "./infoFunkoPanel.js";
+
 /**
  * Crea la sección de descripción del Funko.
  * 
@@ -16,11 +18,19 @@
  */
 export function createDescriptionSection(text) {
 
+    function isMobileUI() {
+        const ui = getUITexture();
+        return ui && ui.getSize().width < 700;
+    }
+
+    const isMobile = isMobileUI();
+
+
     /**
      * Marco exterior de la sección de descripción.
      */
     const frame = new BABYLON.GUI.Rectangle();
-    frame.height = "120px";
+    frame.height = isMobile ? "130px" : "180px";
     frame.width = "90%";
     frame.thickness = 1;
     frame.color = "#333";
@@ -47,7 +57,7 @@ export function createDescriptionSection(text) {
     textBlock.text = text;
     textBlock.color = "#ddd";
     textBlock.textWrapping = true;
-    textBlock.fontSize = "13px";
+    textBlock.fontSize = isMobile ? "8px" : "15px";
     textBlock.resizeToFit = true;
 
     scroll.addControl(textBlock);

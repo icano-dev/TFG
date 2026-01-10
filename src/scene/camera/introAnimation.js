@@ -19,7 +19,7 @@ import { enableUserControls } from "./controls.js";
  * @param {BABYLON.Camera} camera Cámara temporal usada durante la intro
  * @param {HTMLCanvasElement} canvas Canvas de renderizado
  */
-export function playIntroAnimation(scene, camera, canvas) {
+export function playIntroAnimation(scene, camera, canvas, onFinish) {
 
     console.log("Animación de entrada interior");
 
@@ -84,5 +84,7 @@ export function playIntroAnimation(scene, camera, canvas) {
          * Activación de los controles de navegación del usuario.
          */
         enableUserControls(newCam);
+
+        if (onFinish) onFinish();
     });
 }

@@ -23,6 +23,14 @@ let index = 0;
  */
 export function createGallerySection(data) {
 
+    function isMobileUI() {
+        const ui = getUITexture();
+        return ui && ui.getSize().width < 700;
+    }
+
+    const isMobile = isMobileUI();
+
+
     /**
      * Contenedor vertical del botón de galería.
      */
@@ -34,9 +42,9 @@ export function createGallerySection(data) {
      */
     const btn = new BABYLON.GUI.TextBlock();
     btn.text = "Ver galería";
-    btn.height = "30px";
+    btn.height = isMobile ? "24px" : "30px";
     btn.color = "#4fc3f7";
-    btn.fontSize = "16px";
+    btn.fontSize = isMobile ? "16px" : "22px";
     btn.isPointerBlocker = true;
     btn.hoverCursor = "pointer";
 
@@ -66,11 +74,13 @@ function createPopup() {
 
     popup = new BABYLON.GUI.Rectangle("galleryPopup");
 
-    const isMobile = window.innerWidth < 768;
+
+    const texSize = getUITexture().getSize();
+    const isMobile = texSize.width < 700;
 
     if (isMobile) {
-        popup.scaleX = 1.4;
-        popup.scaleY = 1.4;
+        popup.scaleX = 1.2;
+        popup.scaleY = 1.2;
     }
 
     popup.width = "420px";

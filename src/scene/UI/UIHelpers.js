@@ -5,6 +5,8 @@
  * 
  */
 
+import { getUITexture } from "./infoPanel/infoFunkoPanel.js";
+
 /**
  * Crea una fila de información con formato "Clave : Valor".
  * 
@@ -14,13 +16,18 @@
  */
 export function createLabelRow(label, value) {
 
+    const ui = getUITexture();
+    const texSize = ui?.getSize?.() || { width: 1920 };
+    const isMobile = texSize.width < 700;
+
+
     /**
      * Contenedor en forma de grid con dos columnas.
      */
     const row = new BABYLON.GUI.Grid();
-    row.height = "36px";
-    row.paddingTop = "8px";
-    row.paddingBottom = "8px";
+    row.height = isMobile ? "28px" : "36px";
+    row.paddingTop = isMobile ? "4px" : "8px";
+    row.paddingBottom = isMobile ? "4px" : "8px";
     row.width = "100%";
 
     /**
@@ -28,8 +35,8 @@ export function createLabelRow(label, value) {
      *  - 40% clave
      *  - 60% valor
      */
-    row.addColumnDefinition(0.4);
-    row.addColumnDefinition(0.6);
+    row.addColumnDefinition(isMobile ? 0.45 : 0.4);
+    row.addColumnDefinition(isMobile ? 0.55 : 0.6);
 
     /**
      * Bloque de texto de la clave.
@@ -37,7 +44,8 @@ export function createLabelRow(label, value) {
     const key = new BABYLON.GUI.TextBlock();
     key.text = label + ":";
     key.color = "#ffd54f";
-    key.paddingRight = "20px";
+    key.fontSize = isMobile ? "15px" : "20px";
+    key.paddingRight = isMobile ? "10px" : "20px";
     key.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT;
 
     /**
@@ -47,7 +55,8 @@ export function createLabelRow(label, value) {
     const val = new BABYLON.GUI.TextBlock();
     val.text = value ?? "-";
     val.color = "#ffffff";
-    val.paddingLeft = "10px";
+    val.fontSize = isMobile ? "20px" : "20px";
+    val.paddingLeft = isMobile ? "6px" : "10px";
     val.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
 
     /**

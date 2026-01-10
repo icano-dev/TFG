@@ -34,6 +34,8 @@ let visible = false;
  */
 function initUI(scene) {
     uiTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("infoPanelUI", true, scene);
+    uiTexture.idealWidth = 1920;
+    uiTexture.idealHeight = 1080;
 }
 
 
@@ -45,15 +47,11 @@ function initUI(scene) {
  */
 export function showInfoPanel(scene, funko) {
 
-    /**
-     * Inicialización de la interfaz si aún no existe.
-     */
-    if (!uiTexture) initUI(scene);
+    if (!uiTexture) {
+        initUI(scene);
+        createPanel();   // el panel debe existir DESPUÉS de la UI
+    }
 
-    /**
-     * Creación del panel si aún no existe.
-     */
-    if (!panel) createPanel();
 
     /**
      * Obtención de los datos del Funko desde la base de datos.
@@ -102,12 +100,14 @@ function createPanel() {
      * Contenedor principal del panel.
      */
 
-    const isMobile = window.innerWidth < 768;
+    const texSize = uiTexture.getSize();
+    const isMobile = texSize.width < 700;
+
 
     panel = new BABYLON.GUI.Rectangle("infoPanel");
 
-    panel.width = isMobile ? "92%" : "380px";
-    panel.height = isMobile ? "92%" : "520px";
+    panel.width = isMobile ? "92%" : "500px";
+    panel.height = isMobile ? "92%" : "650px";
     panel.left = isMobile ? "0px" : "-150px";
     panel.cornerRadius = 20;
     panel.thickness = 2;

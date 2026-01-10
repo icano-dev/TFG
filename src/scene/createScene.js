@@ -66,12 +66,7 @@ export async function createScene(engine, canvas) {
      */
     const { room, allFunkos } = await createRoom(scene);
 
-    /**
-     * Inicialización del sistema de interacción con Funkos.
-     */
-    enableFunkoSelection(scene, allFunkos, funko => {
-        enterInspect(funko, scene, canvas);
-    });
+
 
     /**
      * Creación de la cámara inicial.
@@ -81,7 +76,16 @@ export async function createScene(engine, canvas) {
     /**
      * Reproducción de la animación de entrada a la sala.
      */
-    playIntroAnimation(scene, camera, canvas);
+    playIntroAnimation(scene, camera, canvas, () => {
+
+        /**
+        * Inicialización del sistema de interacción con Funkos.
+        * Unicamente cuando acabe la animacion, para evitar bugs.
+        */
+        enableFunkoSelection(scene, allFunkos, funko => {
+            enterInspect(funko, scene, canvas);
+        });
+    });
 
     /**
      * Carga de la base de datos local de Funkos.
@@ -112,8 +116,15 @@ export async function createScene(engine, canvas) {
      * Iniciamos modo XR
      */
     const xr = await initXR(scene);
-    setupXRControllers(xr);
-    setupXRInputHandlers(xr);
+
+    if (xr) {
+        setupXRControllers(xr);
+        setupXRInputHandlers(xr);
+        console.log("XR activado");
+    } else {
+        console.log("XR no disponible – modo pantalla");
+    }
+
 
 
     return scene;
