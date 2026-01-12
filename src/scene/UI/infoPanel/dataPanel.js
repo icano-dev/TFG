@@ -21,21 +21,19 @@ import { createLabelRow } from "../UIHelpers.js";
  * @returns {BABYLON.GUI.StackPanel} Contenedor GUI con los campos de información
  */
 export function createDataSection(data) {
-
-    function isMobileUI() {
-        const ui = getUITexture();
-        return ui && ui.getSize().width < 700;
-    }
-
-    const isMobile = isMobileUI();
-
-
     /**
      * Contenedor vertical de la sección de datos.
      */
-    const container = new BABYLON.GUI.StackPanel();
+    const container = new BABYLON.GUI.Grid();
     container.width = "100%";
-    container.isVertical = true;
+    container.height = "100%";
+    container.paddingTop = "5%"
+
+    container.addRowDefinition(0.20);
+    container.addRowDefinition(0.20);
+    container.addRowDefinition(0.20);
+    container.addRowDefinition(0.20);
+    container.addRowDefinition(0.20);
 
 
     /**
@@ -52,8 +50,8 @@ export function createDataSection(data) {
     /**
      * Creación de cada fila de datos.
      */
-    fields.forEach(([label, value]) => {
-        container.addControl(createLabelRow(label, value, isMobile));
+    fields.forEach(([label, value], i) => {
+        container.addControl(createLabelRow(label, value), i, 0);
     });
 
     return container;

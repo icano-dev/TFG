@@ -85,16 +85,16 @@ export function createReturnButton(scene) {
         button = BABYLON.GUI.Button.CreateSimpleButton("returnBtn", "Volver");
 
         // Estilos visuales del botón
-        button.width = "120px";
-        button.height = "50px";
+        button.width = "12%";
+        button.height = "8%";
         button.color = "white";
         button.background = "black";
 
         // Posición en la esquina superior izquierda
         button.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
         button.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
-        button.paddingLeft = "20px";
-        button.paddingTop = "20px";
+        button.paddingLeft = "3%";
+        button.paddingTop = "3%";
 
         /**
          * Evento de clic del botón.

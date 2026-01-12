@@ -98,16 +98,11 @@ function createPanel() {
     /**
      * Contenedor principal del panel.
      */
-
-    const texSize = uiTexture.getSize();
-    const isMobile = texSize.width < 900;
-
-
     panel = new BABYLON.GUI.Rectangle("infoPanel");
 
-    panel.width = isMobile ? "40%" : "35%";
-    panel.height = isMobile ? "90%" : "85%";
-    panel.left = isMobile ? "-6%" : "-8%";
+    panel.width = "35%";
+    panel.height = "85%";
+    panel.left = "-8%";
     panel.cornerRadius = 20;
     panel.thickness = 2;
     panel.color = "#ffd54f";

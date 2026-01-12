@@ -33,15 +33,10 @@ export function createTittle(data) {
     container.width = "100%"
     container.height = "100%"
     container.paddingTop = "5%"
-    container.thickness = 1;              // borde visible
-container.color = "red";              // color del borde
-container.background = "#ff000033";   // fondo semitransparente
 
-    
     // 70% nombre / 30% subtítulo
     container.addRowDefinition(0.80);
     container.addRowDefinition(0.20);
-    container.thik
 
 
     /**

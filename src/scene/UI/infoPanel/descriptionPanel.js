@@ -17,46 +17,28 @@ import { getUITexture } from "./infoFunkoPanel.js";
  * @returns {BABYLON.GUI.Rectangle} Contenedor GUI con scroll y texto
  */
 export function createDescriptionSection(text) {
-
-    function isMobileUI() {
-        const ui = getUITexture();
-        return ui && ui.getSize().width < 700;
-    }
-
-    const isMobile = isMobileUI();
-
-
     /**
      * Marco exterior de la sección de descripción.
      */
     const frame = new BABYLON.GUI.Rectangle();
-    frame.height = isMobile ? "130px" : "80%";
+    frame.height = "100%";
     frame.width = "90%";
     frame.thickness = 1;
     frame.color = "#333";
     frame.cornerRadius = 10;
-    frame.paddingTop = "8px";
-    frame.paddingBottom = "8px";
-    frame.paddingLeft = "8px";
-    frame.paddingRight = "8px";
-    
+    frame.paddingTop = "5%";
+
+
 
     /**
      * Contenedor con barra de desplazamiento vertical.
      */
     const scroll = new BABYLON.GUI.ScrollViewer();
-    scroll.width = "94%";
-    scroll.left = "-3%";
+    scroll.width = "100%";
     scroll.height = "100%";
     scroll.thickness = 0;
     scroll.barColor = "#ffd54f";
     scroll.background = "transparent";
-
-    // magia anti-clipping
-    scroll.paddingRight = "12px";
-    scroll._verticalBar.left = "-6px";
-    scroll._verticalBar.width = "10px";
-
 
     /**
      * Bloque de texto que contiene la descripción.
@@ -65,8 +47,12 @@ export function createDescriptionSection(text) {
     textBlock.text = text;
     textBlock.color = "#ddd";
     textBlock.textWrapping = true;
-    textBlock.fontSize = isMobile ? "8px" : "16px";
-    textBlock.resizeToFit = true;
+    textBlock.fontSize = "10%";
+    textBlock.resizeToFit = false;
+    textBlock.paddingTop = "2%";
+    textBlock.paddingLeft = "2%",
+        textBlock.paddingRight = "2%"
+
 
     scroll.addControl(textBlock);
     frame.addControl(scroll);

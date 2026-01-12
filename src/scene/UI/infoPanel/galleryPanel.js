@@ -23,29 +23,27 @@ let index = 0;
  */
 export function createGallerySection(data) {
 
-    function isMobileUI() {
-        const ui = getUITexture();
-        return ui && ui.getSize().width < 900;
-    }
-
-    const isMobile = isMobileUI();
-
-
     /**
      * Contenedor vertical del botón de galería.
      */
-    const container = new BABYLON.GUI.StackPanel();
-    container.paddingTop = "42px";
+    const container = new BABYLON.GUI.Rectangle();
+    container.width = "100%";
+    container.height = "100%";
+    container.thickness = 0;
+    container.paddingTop = "5%"
 
     /**
      * Texto clicable que actúa como botón.
      */
     const btn = new BABYLON.GUI.TextBlock();
     btn.text = "Ver galería";
-    btn.height = isMobile ? "24px" : "30px";
+    btn.height = "100%";
+    btn.width = "100%"
     btn.color = "#4fc3f7";
-    btn.fontSize = isMobile ? "16px" : "22px";
+    btn.fontSize = "30%";
     btn.isPointerBlocker = true;
+    btn.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER;
+    btn.textVerticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_CENTER;
     btn.hoverCursor = "pointer";
 
     /**
@@ -73,18 +71,8 @@ function createPopup() {
      */
 
     popup = new BABYLON.GUI.Rectangle("galleryPopup");
-
-
-    const texSize = getUITexture().getSize();
-    const isMobile = texSize.width < 700;
-
-    if (isMobile) {
-        popup.scaleX = 1.2;
-        popup.scaleY = 1.2;
-    }
-
-    popup.width = "420px";
-    popup.height = "520px";
+    popup.width = "30%";
+    popup.height = "80%";
     popup.background = "rgba(0,0,0,0.9)";
     popup.thickness = 0;
     popup.isVisible = false;
@@ -105,21 +93,18 @@ function createPopup() {
      * Botón de cierre del popup.
      */
     const closeBtn = BABYLON.GUI.Button.CreateSimpleButton("close", "✖");
-    closeBtn.width = "40px";
-    closeBtn.height = "40px";
+    closeBtn.width = "10%";
+    closeBtn.height = "8%";
     closeBtn.color = "#ffffff";
     closeBtn.background = "#c62828";
     closeBtn.thickness = 0;
     closeBtn.cornerRadius = 20;
-    closeBtn.top = "10px";
-    closeBtn.left = "-10px";
+    closeBtn.top = "2%";
+    closeBtn.left = "-2%";
     closeBtn.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT;
     closeBtn.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
 
     closeBtn.onPointerUpObservable.add(() => popup.isVisible = false);
-
-    popup.addControl(img);
-    popup.addControl(closeBtn);
 
     /**
      * Botones de navegación izquierda/derecha.
@@ -128,23 +113,24 @@ function createPopup() {
     const right = BABYLON.GUI.Button.CreateSimpleButton("next", "▶");
 
     [left, right].forEach(btn => {
+        btn.width = "12%";
+        btn.height = "10%";
         btn.color = "#ffd54f";
         btn.background = "rgba(0,0,0,0.5)";
         btn.thickness = 0;
         btn.cornerRadius = 25;
     });
 
-    left.width = right.width = "50px";
-    left.height = right.height = "50px";
-
     left.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
     right.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT;
 
-    popup.addControl(left);
-    popup.addControl(right);
-
     left.onPointerUpObservable.add(() => change(-1)); // Cambio de imagen a cada boton
     right.onPointerUpObservable.add(() => change(1));
+
+    popup.addControl(img);
+    popup.addControl(closeBtn);
+    popup.addControl(left);
+    popup.addControl(right);
 
     /**
      * Inserción del popup en la GUI global.
