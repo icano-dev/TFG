@@ -11,6 +11,7 @@
 
 import { switchToUniversalCamera } from "./switchCamera.js";
 import { enableUserControls } from "./controls.js";
+import { PLAYER_PHYSICS } from "./switchCamera.js";
 
 /**
  * Reproduce la animación de entrada al interior de la sala.
@@ -27,8 +28,10 @@ export function playIntroAnimation(scene, camera, canvas, onFinish) {
      * Posicionamiento inicial de la cámara justo dentro de la puerta.
      * Esta será la posición de partida de la animación.
      */
-    camera.position = new BABYLON.Vector3(0, 1.6, 4);
-    camera.setTarget(new BABYLON.Vector3(0, 1.6, 0));
+    const eyeHeight = PLAYER_PHYSICS.offset.y;   // 0.8
+
+    camera.position = new BABYLON.Vector3(0, eyeHeight, 4);
+    camera.setTarget(new BABYLON.Vector3(0, eyeHeight, 0));
 
     /**
      * Definición de la animación que desplaza la cámara hacia el interior.
@@ -66,25 +69,28 @@ export function playIntroAnimation(scene, camera, canvas, onFinish) {
      */
     scene.beginAnimation(camera, 0, 120, false, 1.0, () => {
 
-        // Corrección de la posición física final
-        const finalPos = camera.position.clone();
-        finalPos.y = 1.6; // altura de los ojos del usuario
+        // Raycast al suelo
+        const ray = new BABYLON.Ray(camera.position, BABYLON.Vector3.Down(), 5);
+        const hit = scene.pickWithRay(ray, m => m.checkCollisions);
 
-        /**
-         * Sustitución de la cámara temporal por la cámara definitiva.
-         */
+        const groundY = hit?.pickedPoint?.y ?? 0;
+
+        const finalPos = new BABYLON.Vector3(
+            camera.position.x,
+            groundY + PLAYER_PHYSICS.offset.y,          // altura real del jugador
+            camera.position.z
+        );
+
+        const forwardTarget = finalPos.add(new BABYLON.Vector3(0, 0, -1));
+
         const newCam = switchToUniversalCamera(
             scene,
             canvas,
             finalPos,
-            new BABYLON.Vector3(0, 1.6, 0)
+            forwardTarget
         );
 
-        /**
-         * Activación de los controles de navegación del usuario.
-         */
         enableUserControls(newCam);
-
-        if (onFinish) onFinish();
     });
+
 }
