@@ -30,7 +30,7 @@ export function createDescriptionSection(text) {
      * Marco exterior de la sección de descripción.
      */
     const frame = new BABYLON.GUI.Rectangle();
-    frame.height = isMobile ? "130px" : "180px";
+    frame.height = isMobile ? "130px" : "80%";
     frame.width = "90%";
     frame.thickness = 1;
     frame.color = "#333";
@@ -39,16 +39,24 @@ export function createDescriptionSection(text) {
     frame.paddingBottom = "8px";
     frame.paddingLeft = "8px";
     frame.paddingRight = "8px";
+    
 
     /**
      * Contenedor con barra de desplazamiento vertical.
      */
     const scroll = new BABYLON.GUI.ScrollViewer();
-    scroll.width = "100%";
+    scroll.width = "94%";
+    scroll.left = "-3%";
     scroll.height = "100%";
     scroll.thickness = 0;
     scroll.barColor = "#ffd54f";
     scroll.background = "transparent";
+
+    // magia anti-clipping
+    scroll.paddingRight = "12px";
+    scroll._verticalBar.left = "-6px";
+    scroll._verticalBar.width = "10px";
+
 
     /**
      * Bloque de texto que contiene la descripción.
@@ -57,7 +65,7 @@ export function createDescriptionSection(text) {
     textBlock.text = text;
     textBlock.color = "#ddd";
     textBlock.textWrapping = true;
-    textBlock.fontSize = isMobile ? "8px" : "15px";
+    textBlock.fontSize = isMobile ? "8px" : "16px";
     textBlock.resizeToFit = true;
 
     scroll.addControl(textBlock);

@@ -29,33 +29,43 @@ export function createTittle(data) {
     /**
      * Contenedor vertical del bloque de título.
      */
-    const container = new BABYLON.GUI.StackPanel();
-    container.height = isMobile ? "55px" : "70px";
-    container.paddingBottom = "10px";
-    container.isVertical = true;
+    const container = new BABYLON.GUI.Grid();
+    container.width = "100%"
+    container.height = "100%"
+    container.paddingTop = "5%"
+    container.thickness = 1;              // borde visible
+container.color = "red";              // color del borde
+container.background = "#ff000033";   // fondo semitransparente
+
+    
+    // 70% nombre / 30% subtítulo
+    container.addRowDefinition(0.80);
+    container.addRowDefinition(0.20);
+    container.thik
+
 
     /**
      * Texto principal: nombre del Funko.
      */
     const title = new BABYLON.GUI.TextBlock();
     title.text = data.name;
-    title.fontSize = isMobile ? "20px" : "35px";
-    title.height = "40px";
+    title.fontSize = isMobile ? "25%" : "60%";
     title.color = "#ffd54f";
     title.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER;
+    title.textVerticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_BOTTOM;
 
     /**
      * Texto secundario: colección y número de referencia.
      */
     const subtitle = new BABYLON.GUI.TextBlock();
     subtitle.text = `${data.collection} · #${data.number}`;
-    subtitle.fontSize = isMobile ? "12px" : "14px";
-    subtitle.height = "20px";
+    subtitle.fontSize = isMobile ? "20%" : "75%";
     subtitle.color = "#bbb";
     subtitle.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER;
+    subtitle.textVerticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
 
-    container.addControl(title);
-    container.addControl(subtitle);
+    container.addControl(title, 0, 0);
+    container.addControl(subtitle, 1, 0);
 
     return container;
 }

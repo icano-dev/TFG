@@ -25,7 +25,7 @@ export function createGallerySection(data) {
 
     function isMobileUI() {
         const ui = getUITexture();
-        return ui && ui.getSize().width < 700;
+        return ui && ui.getSize().width < 900;
     }
 
     const isMobile = isMobileUI();
@@ -35,7 +35,7 @@ export function createGallerySection(data) {
      * Contenedor vertical del botón de galería.
      */
     const container = new BABYLON.GUI.StackPanel();
-    container.paddingTop = "12px";
+    container.paddingTop = "42px";
 
     /**
      * Texto clicable que actúa como botón.

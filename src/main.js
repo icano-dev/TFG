@@ -37,9 +37,12 @@ import { createScene } from "./scene/createScene.js";
         }
     });
 
-    if (screen.orientation?.lock) {
-        screen.orientation.lock("landscape").catch(() => { });
-    }
+    document.body.addEventListener("click", () => {
+        if (screen.orientation?.lock) {
+            screen.orientation.lock("landscape").catch(() => { });
+        }
+    }, { once: true });
+
 
 })();
 

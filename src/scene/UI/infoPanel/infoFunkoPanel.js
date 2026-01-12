@@ -34,8 +34,7 @@ let visible = false;
  */
 function initUI(scene) {
     uiTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("infoPanelUI", true, scene);
-    uiTexture.idealWidth = 1920;
-    uiTexture.idealHeight = 1080;
+
 }
 
 
@@ -67,10 +66,10 @@ export function showInfoPanel(scene, funko) {
     /**
      * Construcción de las secciones del panel.
      */
-    panel._content.addControl(createTittle(data)); // Titulo
-    panel._content.addControl(createDataSection(data)); // Datos
-    panel._content.addControl(createDescriptionSection(data.description)); // Descripcion
-    panel._content.addControl(createGallerySection(data)); // Galeria de imagenes
+    panel._content.addControl(createTittle(data), 0, 0); // Titulo
+    panel._content.addControl(createDataSection(data), 1, 0); // Datos
+    panel._content.addControl(createDescriptionSection(data.description), 2, 0); // Descripcion
+    panel._content.addControl(createGallerySection(data), 3, 0); // Boton de galeria
 
     /**
      * Muestra el panel si aún no estaba visible.
@@ -101,14 +100,14 @@ function createPanel() {
      */
 
     const texSize = uiTexture.getSize();
-    const isMobile = texSize.width < 700;
+    const isMobile = texSize.width < 900;
 
 
     panel = new BABYLON.GUI.Rectangle("infoPanel");
 
-    panel.width = isMobile ? "92%" : "500px";
-    panel.height = isMobile ? "92%" : "650px";
-    panel.left = isMobile ? "0px" : "-150px";
+    panel.width = isMobile ? "40%" : "35%";
+    panel.height = isMobile ? "90%" : "85%";
+    panel.left = isMobile ? "-6%" : "-8%";
     panel.cornerRadius = 20;
     panel.thickness = 2;
     panel.color = "#ffd54f";
@@ -119,15 +118,17 @@ function createPanel() {
     /**
      * Contenedor vertical para las secciones internas.
      */
-    const stack = new BABYLON.GUI.StackPanel();
-    stack.paddingTop = "20px";
-    stack.paddingLeft = "20px";
-    stack.paddingRight = "20px";
-    stack.isVertical = true;
-    stack.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+    const layout = new BABYLON.GUI.Grid();
+    layout.width = "100%";
+    layout.height = "100%";
 
-    panel._content = stack;
-    panel.addControl(stack);
+    layout.addRowDefinition(0.20); // TÍTULO
+    layout.addRowDefinition(0.40); // DATOS
+    layout.addRowDefinition(0.40); // DESCRIPCIÓN
+    layout.addRowDefinition(0.20); // GALERÍA
+
+    panel._content = layout;
+    panel.addControl(layout);
 }
 
 export function getUITexture() {

@@ -34,10 +34,9 @@ export function createDataSection(data) {
      * Contenedor vertical de la sección de datos.
      */
     const container = new BABYLON.GUI.StackPanel();
-    container.paddingTop = isMobile ? "14px" : "30px";
-    container.paddingBottom = isMobile ? "14px" : "30px";
     container.width = "100%";
     container.isVertical = true;
+
 
     /**
      * Campos de datos que se mostrarán en el panel.
@@ -54,7 +53,7 @@ export function createDataSection(data) {
      * Creación de cada fila de datos.
      */
     fields.forEach(([label, value]) => {
-        container.addControl(createLabelRow(label, value));
+        container.addControl(createLabelRow(label, value, isMobile));
     });
 
     return container;

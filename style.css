@@ -56,3 +56,22 @@ body {
         transform: rotate(360deg);
     }
 }
+
+@media screen and (orientation: portrait) {
+  body::before {
+    content: "Gira el móvil para usar la galería";
+    position: fixed;
+    inset: 0;
+    background: #000;
+    color: #ffd54f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    z-index: 99999;
+  }
+
+  #renderCanvas {
+    display: none;
+  }
+}
