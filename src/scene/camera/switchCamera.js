@@ -21,12 +21,6 @@
  * 
  * @returns {BABYLON.UniversalCamera} Cámara definitiva del jugador
  */
-export const PLAYER_PHYSICS = {
-    ellipsoid: new BABYLON.Vector3(0.5, 0.8, 0.5),
-    offset: new BABYLON.Vector3(0, 0.8, 0)
-};
-
-
 export function switchToUniversalCamera(scene, canvas, position, target) {
 
     /**
@@ -48,11 +42,8 @@ export function switchToUniversalCamera(scene, canvas, position, target) {
      * Definición del tamaño físico del jugador.
      * Se utiliza un elipsoide de colisión que simula el cuerpo.
      */
-
-    newCam.ellipsoid = PLAYER_PHYSICS.ellipsoid.clone();
-    newCam.ellipsoidOffset = PLAYER_PHYSICS.offset.clone();
-
-
+    newCam.ellipsoid = new BABYLON.Vector3(0.5, 0.8, 0.5);
+    newCam.ellipsoidOffset = new BABYLON.Vector3(0, 0.8, 0);
 
     /**
      * Distancia mínima de visión.
@@ -82,10 +73,12 @@ export function switchToUniversalCamera(scene, canvas, position, target) {
      */
     scene.activeCamera = newCam;
 
-    newCam.applyGravity = true;
-    newCam.checkCollisions = true;
-
-
+    /**
+     * Desactivación de los primeros ajustes automáticos de colisión
+     * y gravedad para evitar desplazamientos inesperados al crearla.
+     */
+    newCam._needMoveForGravity = false;
+    newCam._needMoveForCollisions = false;
 
     return newCam;
 }
