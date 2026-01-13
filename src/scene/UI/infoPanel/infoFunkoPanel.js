@@ -118,9 +118,9 @@ function createPanel() {
     layout.height = "100%";
 
     layout.addRowDefinition(0.20); // TÍTULO
-    layout.addRowDefinition(0.40); // DATOS
-    layout.addRowDefinition(0.40); // DESCRIPCIÓN
-    layout.addRowDefinition(0.20); // GALERÍA
+    layout.addRowDefinition(0.30); // DATOS
+    layout.addRowDefinition(0.35); // DESCRIPCIÓN
+    layout.addRowDefinition(0.15); // GALERÍA
 
     panel._content = layout;
     panel.addControl(layout);

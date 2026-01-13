@@ -48,10 +48,10 @@ export function createDescriptionSection(text) {
     textBlock.color = "#ddd";
     textBlock.textWrapping = true;
     textBlock.fontSize = "10%";
-    textBlock.resizeToFit = false;
+    textBlock.resizeToFit = true;
     textBlock.paddingTop = "2%";
-    textBlock.paddingLeft = "2%",
-        textBlock.paddingRight = "2%"
+    textBlock.paddingLeft = "2%";
+    textBlock.paddingRight = "2%"
 
 
     scroll.addControl(textBlock);

@@ -1,25 +1,28 @@
 /**
  * switchCamera.js
  * ---------------------------------------------------------
- * Módulo encargado de sustituir la cámara temporal de la intro
+ * Gestiona la sustitución de la cámara temporal de la intro
  * por la cámara definitiva del jugador.
  * 
- * La nueva cámara es una UniversalCamera con:
- *  - Gravedad
- *  - Colisiones
- *  - Tamaño físico de jugador (elipsoide)
- *  - Controles de movimiento activados
+ * La cámara creada incluye físicas, colisiones y controles de usuario.
  */
 
 /**
- * Sustituye la cámara activa por una cámara para moverse.
- * 
- * @param {BABYLON.Scene} scene Escena Babylon principal
- * @param {HTMLCanvasElement} canvas Canvas de renderizado
- * @param {BABYLON.Vector3} position Posición inicial del jugador
- * @param {BABYLON.Vector3} target Punto hacia el que mirará la cámara
- * 
- * @returns {BABYLON.UniversalCamera} Cámara definitiva del jugador
+ * Configuración física del jugador.
+ */
+export const PLAYER_PHYSICS = {
+    ellipsoid: new BABYLON.Vector3(0.5, 0.8, 0.5),
+    offset: new BABYLON.Vector3(0, 0.8, 0)
+};
+
+/**
+ * Sustituye la cámara activa por una UniversalCamera con físicas.
+ *
+ * @param {BABYLON.Scene} scene Escena principal.
+ * @param {HTMLCanvasElement} canvas Canvas de renderizado.
+ * @param {BABYLON.Vector3} position Posición inicial del jugador.
+ * @param {BABYLON.Vector3} target Vector de orientación inicial.
+ * @returns {BABYLON.UniversalCamera} Cámara definitiva del jugador.
  */
 export function switchToUniversalCamera(scene, canvas, position, target) {
 
@@ -33,52 +36,43 @@ export function switchToUniversalCamera(scene, canvas, position, target) {
     );
 
     /**
-     * Activación de gravedad y colisiones físicas.
+     * Activación de físicas y colisiones.
      */
     newCam.applyGravity = true;
     newCam.checkCollisions = true;
+    newCam.ellipsoid = PLAYER_PHYSICS.ellipsoid.clone();
+    newCam.ellipsoidOffset = PLAYER_PHYSICS.offset.clone();
 
     /**
-     * Definición del tamaño físico del jugador.
-     * Se utiliza un elipsoide de colisión que simula el cuerpo.
-     */
-    newCam.ellipsoid = new BABYLON.Vector3(0.5, 0.8, 0.5);
-    newCam.ellipsoidOffset = new BABYLON.Vector3(0, 0.8, 0);
-
-    /**
-     * Distancia mínima de visión.
      * Permite acercarse mucho a los Funkos en modo inspección.
      */
     newCam.minZ = 0.01;
 
     /**
-     * Orientación inicial de la cámara.
+     * Orientación inicial. ( Mira hacia adelante )
      */
     newCam.setTarget(target.clone());
 
     /**
-     * Activación de controles de ratón y teclado.
+     * Sustitución de la cámara activa.
      */
-    newCam.attachControl(canvas, true);
-
-    console.log("Cambiado a UniversalCamera");
-
-    /**
-     * Eliminación de la cámara anterior (intro).
-     */
-    scene.activeCamera.dispose();
-
-    /**
-     * Activación de la nueva cámara como cámara principal.
-     */
+    const oldCam = scene.activeCamera;
     scene.activeCamera = newCam;
+    oldCam.dispose();
 
     /**
-     * Desactivación de los primeros ajustes automáticos de colisión
-     * y gravedad para evitar desplazamientos inesperados al crearla.
+     * Evita micro-ajustes automáticos de Babylon que pueden romper el picking.
      */
     newCam._needMoveForGravity = false;
     newCam._needMoveForCollisions = false;
+
+    /**
+     * Registro de controles de usuario.
+     */
+    newCam.detachControl();
+    newCam.attachControl(canvas, true);
+
+    console.log("Cámara de jugador activada");
 
     return newCam;
 }

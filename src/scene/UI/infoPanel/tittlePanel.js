@@ -19,13 +19,6 @@ import { getUITexture } from "./infoFunkoPanel.js";
  */
 export function createTittle(data) {
 
-    function isMobileUI() {
-        const ui = getUITexture();
-        return ui && ui.getSize().width < 700;
-    }
-
-    const isMobile = isMobileUI();
-
     /**
      * Contenedor vertical del bloque de título.
      */
@@ -44,7 +37,11 @@ export function createTittle(data) {
      */
     const title = new BABYLON.GUI.TextBlock();
     title.text = data.name;
-    title.fontSize = isMobile ? "25%" : "60%";
+    title.fontSize = "50%";
+    title.textWrapping = true;
+    title.resizeToFit = true;
+    title.maxHeight = "100%";
+    title.maxWidth = "100%";
     title.color = "#ffd54f";
     title.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER;
     title.textVerticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_BOTTOM;
@@ -54,7 +51,7 @@ export function createTittle(data) {
      */
     const subtitle = new BABYLON.GUI.TextBlock();
     subtitle.text = `${data.collection} · #${data.number}`;
-    subtitle.fontSize = isMobile ? "20%" : "75%";
+    subtitle.fontSize = "75%";
     subtitle.color = "#bbb";
     subtitle.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER;
     subtitle.textVerticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;

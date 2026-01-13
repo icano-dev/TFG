@@ -1,38 +1,41 @@
 /**
  * introAnimation.js
  * ---------------------------------------------------------
- * Módulo encargado de reproducir la animación de entrada inicial
- * a la habitación.
+ * Gestiona la animación inicial de entrada del usuario a la galería.
  * 
- * Simula el movimiento del usuario entrando por la puerta y
- * colocándolo en la posición inicial desde la que puede empezar
- * a moverse libremente por la galería.
+ * Simula el desplazamiento desde la puerta hasta la posición inicial
+ * del jugador y sustituye la cámara temporal por la cámara definitiva.
  */
 
 import { switchToUniversalCamera } from "./switchCamera.js";
 import { enableUserControls } from "./controls.js";
+import { PLAYER_PHYSICS } from "./switchCamera.js";
 
 /**
- * Reproduce la animación de entrada al interior de la sala.
- * 
- * @param {BABYLON.Scene} scene Escena Babylon principal
- * @param {BABYLON.Camera} camera Cámara temporal usada durante la intro
- * @param {HTMLCanvasElement} canvas Canvas de renderizado
+ * Ejecuta la animación de entrada al interior de la sala.
+ *
+ * @param {BABYLON.Scene} scene Escena Babylon principal.
+ * @param {BABYLON.Camera} camera Cámara temporal de la intro.
+ * @param {HTMLCanvasElement} canvas Canvas de renderizado.
+ * @param {Function} onFinish Callback ejecutado cuando la animación finaliza.
  */
 export function playIntroAnimation(scene, camera, canvas, onFinish) {
 
     console.log("Animación de entrada interior");
 
     /**
-     * Posicionamiento inicial de la cámara justo dentro de la puerta.
-     * Esta será la posición de partida de la animación.
+     * Altura real de los ojos del jugador.
      */
-    camera.position = new BABYLON.Vector3(0, 1.6, 4);
-    camera.setTarget(new BABYLON.Vector3(0, 1.6, 0));
+    const eyeHeight = PLAYER_PHYSICS.offset.y;
 
     /**
-     * Definición de la animación que desplaza la cámara hacia el interior.
-     * Se anima únicamente el eje Z para simular el avance recto.
+     * Posición inicial de la cámara justo en la entrada.
+     */
+    camera.position = new BABYLON.Vector3(0, eyeHeight, 4);
+    camera.setTarget(new BABYLON.Vector3(0, eyeHeight, 0));
+
+    /**
+     * Animación de avance recto hacia el interior (eje Z).
      */
     const anim = new BABYLON.Animation(
         "enterInterior",
@@ -42,49 +45,63 @@ export function playIntroAnimation(scene, camera, canvas, onFinish) {
         BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT
     );
 
-    /**
-     * Claves de animación: desde la puerta hasta el interior de la sala.
-     */
     anim.setKeys([
         { frame: 0, value: 4 },
         { frame: 120, value: 2 }
     ]);
 
-    /**
-     * Registro de la animación en la cámara.
-     */
     camera.animations = [];
     camera.animations.push(anim);
 
     /**
-     * Inicio de la animación de entrada.
-     * 
+     * Inicio de la animación.
      * Al finalizar:
-     *  - Se obtiene la posición final real de la cámara
-     *  - Se crea la cámara definitiva con colisiones
-     *  - Se activan los controles de usuario
+     *  - Se ajusta la altura real según el suelo
+     *  - Se crea la cámara definitiva
+     *  - Se activan los controles del jugador
      */
     scene.beginAnimation(camera, 0, 120, false, 1.0, () => {
 
-        // Corrección de la posición física final
-        const finalPos = camera.position.clone();
-        finalPos.y = 1.6; // altura de los ojos del usuario
+        /**
+         * Raycast hacia abajo para localizar el suelo.
+         */
+        const ray = new BABYLON.Ray(camera.position, BABYLON.Vector3.Down(), 5);
+        const hit = scene.pickWithRay(ray, m => m.checkCollisions);
+
+        const groundY = hit?.pickedPoint?.y ?? 0;
 
         /**
-         * Sustitución de la cámara temporal por la cámara definitiva.
+         * Posición final real del jugador sobre el suelo.
+         */
+        const finalPos = new BABYLON.Vector3(
+            camera.position.x,
+            groundY + PLAYER_PHYSICS.offset.y,
+            camera.position.z
+        );
+
+        /**
+         * Mirar hacia adelante de orientación inicial.
+         */
+        const forwardTarget = finalPos.add(new BABYLON.Vector3(0, 0, -1));
+
+        /**
+         * Sustitución por la cámara definitiva del jugador.
          */
         const newCam = switchToUniversalCamera(
             scene,
             canvas,
             finalPos,
-            new BABYLON.Vector3(0, 1.6, 0)
+            forwardTarget
         );
 
         /**
-         * Activación de los controles de navegación del usuario.
+         * Activación de controles de movimiento.
          */
         enableUserControls(newCam);
 
+        /**
+         * Callback para activar interacciones (selección de Funkos).
+         */
         if (onFinish) onFinish();
     });
 }
