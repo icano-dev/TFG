@@ -19,6 +19,7 @@ import { disableUserControls, enableUserControls } from "../camera/controls.js";
 import { updateReturnButton } from "../UI/btnReturn.js";
 import { enableFunkoRotation } from "../model/funkoRotation.js";
 import { showInfoPanel, hideInfoPanel } from "../UI/infoPanel/infoFunkoPanel.js";
+import { setInstructions } from "../UI/instruccions.js";
 
 /**
  * Entra en modo inspección para un Funko concreto.
@@ -68,6 +69,7 @@ export function enterInspect(funko, scene, canvas) {
         AppState.transitioning = false;
         updateReturnButton(); // Se crea el boton "Volver"
         showInfoPanel(scene, funko); // Se muestra el panel de informacion
+        setInstructions(scene, "inspect");
     });
 
     /**
@@ -126,4 +128,6 @@ export function exitInspect(scene, canvas) {
      */
     updateReturnButton(); // Desaparece el boton
     hideInfoPanel(); // Desaparece el panel de informacion
+
+    setInstructions(scene, "gallery");
 }

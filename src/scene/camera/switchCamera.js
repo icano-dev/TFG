@@ -72,6 +72,11 @@ export function switchToUniversalCamera(scene, canvas, position, target) {
     newCam.detachControl();
     newCam.attachControl(canvas, true);
 
+    // Sensibilidad de giro en móviles (DEDOS)
+    newCam.inputs.attached.touch.touchAngularSensibility = 2000;
+    
+
+
     console.log("Cámara de jugador activada");
 
     return newCam;

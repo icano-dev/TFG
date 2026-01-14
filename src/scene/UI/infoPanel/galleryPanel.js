@@ -10,6 +10,7 @@
  *  - Cerrar la galería cuando desee
  */
 import { getUITexture } from "./infoFunkoPanel.js";
+import { setInstructions } from "../instruccions.js";
 
 let popup = null;
 let currentImages = [];
@@ -145,6 +146,9 @@ function createPopup() {
  */
 function openGallery(images = []) {
     if (!images.length) return;
+
+    setInstructions(getUITexture()._hostScene, "galleryPopup");
+
     currentImages = images;
     index = 0;
     popup._img.source = currentImages[0];
@@ -167,4 +171,6 @@ function change(dir) {
 export function closeGallery() {
     if (!popup) return;
     popup.isVisible = false;
+
+    setInstructions(getUITexture()._hostScene, "inspect");
 }

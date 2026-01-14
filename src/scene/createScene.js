@@ -26,6 +26,7 @@ import { loadFunkoDatabase } from "./data/funkoDataBase.js";
 import { initXR } from "./XR/XRHelpers.js";
 import { setupXRControllers } from "./XR/XRController.js";
 import { setupXRInputHandlers } from "./XR/XRInputHandlers.js";
+import { initInstructions, showInstructions } from "./UI/instruccions.js";
 
 /**
  * Crea y configura la escena principal del proyecto.
@@ -111,6 +112,9 @@ export async function createScene(engine, canvas) {
      * Creación del botón de retorno desde el modo inspección.
      */
     createReturnButton(scene, canvas);
+
+    initInstructions(scene);
+    showInstructions(scene, false);
 
     /**
      * Iniciamos modo XR

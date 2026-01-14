@@ -10,6 +10,7 @@
 import { switchToUniversalCamera } from "./switchCamera.js";
 import { enableUserControls } from "./controls.js";
 import { PLAYER_PHYSICS } from "./switchCamera.js";
+import { showInstructions, setInstructions } from "../UI/instruccions.js";
 
 /**
  * Ejecuta la animación de entrada al interior de la sala.
@@ -98,6 +99,9 @@ export function playIntroAnimation(scene, camera, canvas, onFinish) {
          * Activación de controles de movimiento.
          */
         enableUserControls(newCam);
+
+        setInstructions(scene, "gallery");
+        showInstructions(scene, true);
 
         /**
          * Callback para activar interacciones (selección de Funkos).
