@@ -12,7 +12,7 @@ export const varietyCollection = [
 
   {
     id: "Pikachu",
-    file: "Pikachu.glb",
+    file: "pikachu-reducido.glb",
     shelf: "main",
     slot: 1,
     scale: 0.25,
@@ -20,7 +20,7 @@ export const varietyCollection = [
   },
   {
     id: "goku",
-    file: "goku.glb",
+    file: "goku-reducido.glb",
     shelf: "main",
     slot: 4,
     scale: 0.25,
@@ -28,7 +28,7 @@ export const varietyCollection = [
   },
   {
     id: "once",
-    file: "once.glb",
+    file: "once-reducido.glb",
     shelf: "main",
     slot: 3,
     scale: 0.25,
@@ -36,7 +36,7 @@ export const varietyCollection = [
   },
   {
     id: "stitch",
-    file: "stitch.glb",
+    file: "stitch-reducido.glb",
     shelf: "main",
     slot: 7,
     scale: 0.25,
@@ -44,7 +44,7 @@ export const varietyCollection = [
   },
   {
     id: "beast",
-    file: "beast.glb",
+    file: "beast-reducido.glb",
     shelf: "main",
     slot: 12,
     scale: 0.25,

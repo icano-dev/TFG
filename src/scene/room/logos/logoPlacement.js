@@ -21,7 +21,7 @@ export function placeLogo(scene, room) {
      */
     const marvelLogo = createLogo(scene, {
         name: "marvelLogo",
-        imagePath: "./assets/images/logos/Marvel_logo.svg",
+        imagePath: "./assets/images/logos/marvel-logo.svg",
         width: 1.2,
         height: 0.45
     });
@@ -36,7 +36,7 @@ export function placeLogo(scene, room) {
      */
     const dcLogo = createLogo(scene, {
         name: "dcLogo",
-        imagePath: "./assets/images/logos/DC_logo.svg",
+        imagePath: "./assets/images/logos/dc-logo.svg",
         width: 0.65,
         height: 0.65
     });
@@ -51,7 +51,7 @@ export function placeLogo(scene, room) {
      */
     const hpLogo = createLogo(scene, {
         name: "hpLogo",
-        imagePath: "./assets/images/logos/Harry_Potter_logo.svg",
+        imagePath: "./assets/images/logos/harry-potter-logo.svg",
         width: 1.3,
         height: 0.5
     });
@@ -66,7 +66,7 @@ export function placeLogo(scene, room) {
      */
     const varietyLogo = createLogo(scene, {
         name: "varietyLogo",
-        imagePath: "./assets/images/logos/Variety.svg",
+        imagePath: "./assets/images/logos/varietypro.svg",
         width: 1.5,
         height: 0.8
     });
