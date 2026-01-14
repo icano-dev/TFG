@@ -179,7 +179,7 @@ export async function createRoom(scene) {
      */
     const dcFunkos = await setupCollection(scene, {
         collection: dcCollection,
-        folder: "dc-pro",
+        folder: "dc",
         shelfMap: {
             top: shelves.dcShelfTop,
             bottom: shelves.dcShelfBottom
@@ -192,7 +192,7 @@ export async function createRoom(scene) {
      */
     const hpFunkos = await setupCollection(scene, {
         collection: hpCollection,
-        folder: "harry-potter-pro",
+        folder: "harry-potter",
         shelfMap: {
             main: shelves.hpShelf
         },

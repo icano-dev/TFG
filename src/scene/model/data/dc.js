@@ -12,31 +12,31 @@ export const dcCollection = [
 
   {
     id: "aquaman",                 // Identificador único (enlaza con la base de datos JSON)
-    file: "aquaman-reducido.glb",   // Archivo GLB del modelo 3D
+    file: "aquaman.glb",   // Archivo GLB del modelo 3D
     shelf: "top",                  // Estantería destino
     slot: 1                        // Posición dentro de la estantería
   },
   {
     id: "batman",
-    file: "batman-reducido.glb",
+    file: "batman.glb",
     shelf: "top",
     slot: 3
   },
   {
     id: "flash",
-    file: "flash-reducido.glb",
+    file: "flash.glb",
     shelf: "top",
     slot: 6
   },
   {
     id: "superman",
-    file: "superman-reducido.glb",
+    file: "superman.glb",
     shelf: "bottom",
     slot: 0
   },
   {
     id: "wonderWoman",
-    file: "wonderwoman-reducido.glb",
+    file: "wonderwoman.glb",
     shelf: "bottom",
     slot: 5
   }

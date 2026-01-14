@@ -15,7 +15,7 @@ export const hpCollection = [
 
   {
     id: "HarryPotter",                    // Identificador (enlaza con la base de datos)
-    file: "harry-potter-reducido.glb",     // Modelo 3D
+    file: "harry-potter.glb",     // Modelo 3D
     shelf: "main",                       // Estantería destino
     slot: 1,                             // Slot dentro de la estantería
     scale: 0.25,                         // Escala específica para este Funko
@@ -23,7 +23,7 @@ export const hpCollection = [
   },
   {
     id: "Hermione",
-    file: "hermione-reducido.glb",
+    file: "hermione.glb",
     shelf: "main",
     slot: 3,
     scale: 0.25,
@@ -31,7 +31,7 @@ export const hpCollection = [
   },
   {
     id: "Ron",
-    file: "ron-reducido.glb",
+    file: "ron.glb",
     shelf: "main",
     slot: 4,
     scale: 0.25,
@@ -39,7 +39,7 @@ export const hpCollection = [
   },
   {
     id: "Dumbledore",
-    file: "dumbledore-reducido.glb",
+    file: "dumbledore.glb",
     shelf: "main",
     slot: 9,
     scale: 0.25,
@@ -47,7 +47,7 @@ export const hpCollection = [
   },
   {
     id: "Doby",
-    file: "dobby-reducido.glb",
+    file: "dobby.glb",
     shelf: "main",
     slot: 11,
     scale: 0.25,

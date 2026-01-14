@@ -14,31 +14,31 @@ export const marvelCollection = [
 
   {
     id: "capitanAmerica",               // Identificador del Funko
-    file: "capitan-america-reducido.glb", // Modelo 3D
+    file: "capitan-america.glb",        // Modelo 3D
     shelf: "top",                       // Estantería superior
     slot: 0                             // Posición dentro de la estantería
   },
   {
     id: "hulk",
-    file: "hulk-reducido.glb",
+    file: "hulk.glb",
     shelf: "top",
     slot: 2
   },
   {
     id: "ironman",
-    file: "ironman-reducido.glb",
+    file: "ironman.glb",
     shelf: "top",
     slot: 7
   },
   {
     id: "thor",
-    file: "thor-reducido.glb",
+    file: "thor.glb",
     shelf: "bottom",
     slot: 1
   },
   {
     id: "spiderman",
-    file: "spiderman-reducido.glb",
+    file: "spiderman.glb",
     shelf: "bottom",
     slot: 4
   }

@@ -66,7 +66,7 @@ export function placeLogo(scene, room) {
      */
     const varietyLogo = createLogo(scene, {
         name: "varietyLogo",
-        imagePath: "./assets/images/logos/varietypro.svg",
+        imagePath: "./assets/images/logos/variety-logo.svg",
         width: 1.5,
         height: 0.8
     });
