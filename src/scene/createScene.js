@@ -27,6 +27,7 @@ import { initXR } from "./XR/XRHelpers.js";
 import { setupXRControllers } from "./XR/XRController.js";
 import { setupXRInputHandlers } from "./XR/XRInputHandlers.js";
 import { initInstructions, showInstructions } from "./UI/instruccions.js";
+import { createMobileJoysticksUI, hideJoysticks } from "./UI/joystickUI.js";
 
 /**
  * Crea y configura la escena principal del proyecto.
@@ -74,11 +75,28 @@ export async function createScene(engine, canvas) {
      */
     const camera = setupCamera(scene);
 
+    const isMobile =
+        "ontouchstart" in window ||
+        navigator.maxTouchPoints > 0 ||
+        navigator.msMaxTouchPoints > 0;
+
+    scene.joysticks = isMobile
+        ? createMobileJoysticksUI(scene)
+        : null;
+
+    if (scene.joysticks) {
+        hideJoysticks(scene.joysticks);
+    }
+
+
+    initInstructions(scene);
+    showInstructions(scene, false);
+
+
     /**
      * Reproducción de la animación de entrada a la sala.
      */
-    playIntroAnimation(scene, camera, canvas, () => {
-
+    playIntroAnimation(scene, camera, canvas, scene.joysticks, () => {
         /**
         * Inicialización del sistema de interacción con Funkos.
         * Unicamente cuando acabe la animacion, para evitar bugs.
@@ -113,8 +131,8 @@ export async function createScene(engine, canvas) {
      */
     createReturnButton(scene, canvas);
 
-    initInstructions(scene);
-    showInstructions(scene, false);
+
+
 
     /**
      * Iniciamos modo XR

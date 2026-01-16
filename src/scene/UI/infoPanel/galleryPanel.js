@@ -105,7 +105,7 @@ function createPopup() {
     closeBtn.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT;
     closeBtn.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
 
-    closeBtn.onPointerUpObservable.add(() => popup.isVisible = false);
+    closeBtn.onPointerUpObservable.add(() => closeGallery());
 
     /**
      * Botones de navegación izquierda/derecha.

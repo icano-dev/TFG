@@ -20,6 +20,8 @@ import { updateReturnButton } from "../UI/btnReturn.js";
 import { enableFunkoRotation } from "../model/funkoRotation.js";
 import { showInfoPanel, hideInfoPanel } from "../UI/infoPanel/infoFunkoPanel.js";
 import { setInstructions } from "../UI/instruccions.js";
+import { pauseMobileControls, resumeMobileControls } from "../camera/controlsMobile.js";
+import { hideJoysticks, showJoysticks } from "../UI/joystickUI.js";
 
 /**
  * Entra en modo inspección para un Funko concreto.
@@ -61,6 +63,24 @@ export function enterInspect(funko, scene, canvas) {
      */
     scene.activeCamera.detachControl();
     disableUserControls(scene.activeCamera);
+
+    /**
+     * Se desactivan los controles del movil durante la animación.
+     */
+    if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
+        pauseMobileControls();
+    }
+
+    /**
+     * Desaparecen los joysticks
+     */
+    if (scene.joysticks && scene.joysticks.ui) {
+        hideJoysticks(scene.joysticks);
+    }
+
+
+
+
 
     /**
      * Reproducción de la animación de acercamiento al Funko.
@@ -122,6 +142,23 @@ export function exitInspect(scene, canvas) {
     restoreCameraState(scene.activeCamera);
     scene.activeCamera.attachControl(canvas, true);
     enableUserControls(scene.activeCamera);
+
+    if (scene.activeCamera.inputs?.attached?.touch) {
+        scene.activeCamera.inputs.attached.touch.detachControl();
+    }
+
+    if (scene.joysticks && scene.joysticks.ui) {
+        showJoysticks(scene.joysticks);
+    }
+
+
+
+
+    /**
+     * Restauración de los controles de movil.
+     */
+    resumeMobileControls(scene.activeCamera);
+
 
     /**
      * Actualización de la interfaz.

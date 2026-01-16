@@ -25,7 +25,13 @@ import { createScene } from "./scene/createScene.js";
 
     const scene = await createScene(engine, canvas);
 
+    engine.setHardwareScalingLevel(1 / window.devicePixelRatio);
+
     engine.runRenderLoop(() => scene.render());
+
+    setTimeout(() => {
+        engine.resize();
+    }, 100);
 
     window.addEventListener("resize", () => {
         engine.resize();

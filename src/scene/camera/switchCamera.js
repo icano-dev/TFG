@@ -63,8 +63,8 @@ export function switchToUniversalCamera(scene, canvas, position, target) {
     /**
      * Evita micro-ajustes automáticos de Babylon que pueden romper el picking.
      */
-    newCam._needMoveForGravity = false;
-    newCam._needMoveForCollisions = false;
+    //newCam._needMoveForGravity = false;
+    //newCam._needMoveForCollisions = false;
 
     /**
      * Registro de controles de usuario.

@@ -43,12 +43,12 @@ function getHelpText(mode, input) {
     const MAP = {
         gallery: {
             desktop: "Moverse: WASD\nMirar: Mantener clic + raton\nSeleccionar: clic",
-            mobile: "Moverse: arrastra para desplazarte\nSeleccionar: toca",
+            mobile: "Moverse: joystick izquierdo\nMirar: joystick derecho\nSeleccionar: tocar",
             xr: ""
         },
         inspect: {
             desktop: "Rotar Funko: mantén clic y arrastra\nSalir: ESC o botón Volver",
-            mobile: "Rotar Funko: mantén pulsado y arrastra\nSalir: botón Volver",
+            mobile: "Rotar Funko: Toca y arrastra\nSalir: botón Volver",
             xr: "Salir: botón Volver"
         },
         galleryPopup: {

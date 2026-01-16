@@ -11,6 +11,8 @@ import { switchToUniversalCamera } from "./switchCamera.js";
 import { enableUserControls } from "./controls.js";
 import { PLAYER_PHYSICS } from "./switchCamera.js";
 import { showInstructions, setInstructions } from "../UI/instruccions.js";
+import { enableMobileJoysticks } from "./controlsMobile.js";
+import { hideJoysticks, showJoysticks } from "../UI/joystickUI.js";
 
 /**
  * Ejecuta la animación de entrada al interior de la sala.
@@ -20,7 +22,11 @@ import { showInstructions, setInstructions } from "../UI/instruccions.js";
  * @param {HTMLCanvasElement} canvas Canvas de renderizado.
  * @param {Function} onFinish Callback ejecutado cuando la animación finaliza.
  */
-export function playIntroAnimation(scene, camera, canvas, onFinish) {
+export function playIntroAnimation(scene, camera, canvas, joysticks, onFinish) {
+
+    // No se ven los joysticks durante la animación de entrada
+    if (joysticks) hideJoysticks(joysticks);
+
 
     console.log("Animación de entrada interior");
 
@@ -95,10 +101,21 @@ export function playIntroAnimation(scene, camera, canvas, onFinish) {
             forwardTarget
         );
 
+        const loader = document.getElementById("loadingScreen");
+        if (loader) {
+            loader.style.pointerEvents = "none";
+        }
+
         /**
          * Activación de controles de movimiento.
          */
         enableUserControls(newCam);
+
+        enableMobileJoysticks(scene, newCam, joysticks);
+
+        // Solo se muestran los joysticks al terminar la animación (modo gallery)
+        if (joysticks) showJoysticks(joysticks);
+
 
         setInstructions(scene, "gallery");
         showInstructions(scene, true);
